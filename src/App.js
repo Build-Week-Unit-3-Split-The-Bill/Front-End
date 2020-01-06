@@ -7,6 +7,7 @@ import Login from './component/login';
 import Home from './component/home';
 import Dashboard from './component/dashboard';
 import Register from './component/register';
+import withAuthChecker from './custom-hooks/withAuthChecker'
 
 function App() {
 
@@ -27,8 +28,8 @@ function App() {
     <div className="App">
       <Navbar />
       <Route exact path="/" component={Home} />
-      <Route exact path='/login' render={props => (<Login {...props} loginFormValues={loginFormValues} setLoginFormValues={setLoginFormValues} />)}/>/>
-      <Route exact path="/dashboard" component={Dashboard} />
+      <Route exact path='/login' render={props => (<Login {...props} loginFormValues={loginFormValues} setLoginFormValues={setLoginFormValues} />)}/>
+      <Route exact path="/dashboard" render={props => withAuthChecker (Dashboard)} />
       <Route
         exact
         path="/register"
