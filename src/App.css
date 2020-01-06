@@ -53,13 +53,28 @@ Stark: #E7DFDD
   padding-top: 50px;
 }
 
-.login-form {
+.forms {
   display: flex;
   flex-direction: column;
   width: 30vw;
   margin: 0 auto;
 }
 
-.login-form input {
+.forms input {
     margin-top: 30px;
+}
+
+.simple-trans-main > div {
+  cursor: pointer;
+  position: absolute;
+  width: 100vw;
+  height: 600px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-weight: 800;
+  font-size: 4em;
+  will-change: transform, opacity;
+  text-shadow: 0px 2px 40px #00000020, 0px 2px 5px #00000030;
 }

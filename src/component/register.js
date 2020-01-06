@@ -41,7 +41,7 @@ function Register(props) {
   return (
     <div>
       <h2>Register Now</h2>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className='forms'>
         <label>
           First Name:
           <input

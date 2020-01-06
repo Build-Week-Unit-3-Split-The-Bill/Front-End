@@ -1,10 +1,28 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
+import { useSpring, a } from 'react-spring'
 
 function Navbar() {
+
+    const easeInAnimation = useSpring({
+        config: {
+            mass: 5,
+            stiffness: 200,
+            friction: 100,
+            clamp: true
+        },
+        from: {
+            opacity: 0
+        },
+
+        to: {
+            opacity: 1
+        }
+    })
+
   return (
     <div className='navbar'>
-      <div className='nav'>
+      <a.div className='nav' style={easeInAnimation}>
         <Link to='/'><span className='logo'>SPLIT THE BILL</span></Link>
         <div>
             <ul className='nav-links'>
@@ -12,7 +30,7 @@ function Navbar() {
                 <Link to='/team'><li>TEAM</li></Link>
             </ul>
         </div>
-      </div>
+      </a.div>
     </div>
   );
 }
