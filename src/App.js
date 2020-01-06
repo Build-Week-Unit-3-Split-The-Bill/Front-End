@@ -10,18 +10,36 @@ import Register from './component/register';
 
 function App() {
 
+   const [registerForm, setRegisterForm] = useState({
+    first_name: "",
+    last_name: "",
+    email: "",
+    password: ""
+  });
+  
   const [loginFormValues, setLoginFormValues] = useState({
     email: '',
     password: ''
   })
 
+
   return (
     <div className="App">
       <Navbar />
-      <Route exact path='/'component={Home} />
+      <Route exact path="/" component={Home} />
       <Route exact path='/login' render={props => (<Login {...props} loginFormValues={loginFormValues} setLoginFormValues={setLoginFormValues} />)}/>/>
-      <Route exact path='/dashboard'component={Dashboard} />
-      <Route exact path='/register'component={Register} />
+      <Route exact path="/dashboard" component={Dashboard} />
+      <Route
+        exact
+        path="/register"
+        render={() => (
+          <Register
+            setRegisterForm={setRegisterForm}
+            registerForm={registerForm}
+          />
+        )}
+      />
+
       <Footer />
     </div>
   );
