@@ -10,7 +10,7 @@ function Register(props) {
   });
 
   const formChange = e => {
-    console.log(e.target.value);
+    
     setRegisterForm({
       ...registerForm,
       [e.target.name]: e.target.value
@@ -39,11 +39,10 @@ function Register(props) {
   };
 
   return (
-    <div>
+    <div className='register'>
       <h2>Register Now</h2>
       <form onSubmit={handleSubmit} className='forms'>
-        <label>
-          First Name:
+       
           <input
             type="text"
             placeholder="First name"
@@ -51,9 +50,7 @@ function Register(props) {
             onChange={formChange}
             value={registerForm.first_name}
           />
-        </label>
-        <label>
-          Last Name:
+         
           <input
             type="text"
             placeholder="Last name"
@@ -61,9 +58,7 @@ function Register(props) {
             onChange={formChange}
             value={registerForm.last_name}
           />
-        </label>
-        <label>
-          Email:
+    
           <input
             type="email"
             placeholder="email"
@@ -71,9 +66,7 @@ function Register(props) {
             onChange={formChange}
             value={registerForm.email}
           />
-        </label>
-        <label>
-          Password:
+        
           <input
             type="password"
             placeholder="password"
@@ -81,15 +74,13 @@ function Register(props) {
             onChange={formChange}
             value={registerForm.password}
           />
-        </label>
-        <label>
-          Confirm Password:
+          
           <input
             type="password"
             placeholder="re-type password"
             name="confirm_password"
           />
-        </label>
+        
         <input type="submit" />
       </form>
     </div>
