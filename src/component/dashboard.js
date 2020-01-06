@@ -1,10 +1,11 @@
 import React, { useState, useCallback } from 'react'
 import { useTransition, animated } from 'react-spring'
 import Friends from './friends'
+import Bills from './bills'
 
 
 const pages = [
-    ({ style }) => <animated.div style={{ ...style, background: '#EC576B', color: 'white' }}>BILLS</animated.div>,
+    ({ style }) => <animated.div style={{ ...style, background: '#EC576B', color: 'white' }}><Bills /></animated.div>,
     ({ style }) => <animated.div style={{ ...style, background: '#F7CE3E', color: 'white' }}><Friends /></animated.div>,
     ({ style }) => <animated.div style={{ ...style, background: '#4EC5C1', color: 'white' }}>NOTIFICATIONS</animated.div>,
 ]
