@@ -9,20 +9,12 @@ import Dashboard from './component/dashboard';
 import Register from './component/register';
 import withAuthChecker from './custom-hooks/withAuthChecker'
 
-function App() {
 
-   const [registerForm, setRegisterForm] = useState({
-    first_name: "",
-    last_name: "",
+function App() {
+  const [loginFormValues, setLoginFormValues] = useState({
     email: "",
     password: ""
   });
-  
-  const [loginFormValues, setLoginFormValues] = useState({
-    email: '',
-    password: ''
-  })
-
 
   return (
     <div className="App">
@@ -30,17 +22,7 @@ function App() {
       <Route exact path="/" component={Home} />
       <Route exact path='/login' render={props => (<Login {...props} loginFormValues={loginFormValues} setLoginFormValues={setLoginFormValues} />)}/>
       <Route exact path="/dashboard" render={props => withAuthChecker (Dashboard)} />
-      <Route
-        exact
-        path="/register"
-        render={() => (
-          <Register
-            setRegisterForm={setRegisterForm}
-            registerForm={registerForm}
-          />
-        )}
-      />
-
+      <Route exact path="/register" render={props => <Register {...props} />} />
       <Footer />
     </div>
   );
