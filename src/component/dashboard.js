@@ -3,6 +3,8 @@ import { useTransition, animated } from "react-spring";
 import Friends from "./friends";
 import Bills from "./bills";
 
+
+
 export default function Dashboard(props) {
   const pages = [
     ({ style }) => (
@@ -22,9 +24,9 @@ export default function Dashboard(props) {
     )
   ];
 
-  const [index, set] = useState(0);
-  const onClick = useCallback(() => set(state => (state + 1) % 3), []);
-  const transitions = useTransition(index, p => p, {
+  const [sliderIteration, setSliderIteration] = useState(0);
+  const onClick = useCallback(() => setSliderIteration(state => (state + 1) % 3), []);
+  const transitions = useTransition(sliderIteration, p => p, {
     from: { opacity: 1, transform: "translate3d(100%,0,0)" },
     enter: { opacity: 1, transform: "translate3d(0%,0,0)" },
     leave: { opacity: 1, transform: "translate3d(-50%,0,0)" }

@@ -10,20 +10,23 @@ import Register from "./component/register";
 import withAuthChecker from "./custom-hooks/withAuthChecker";
 import axiosWithAuth from "./custom-hooks/axiosWithAuth";
 import axios from "axios";
+import useLocalStorage from "./custom-hooks/useLocalStorage";
+
 
 function App(props) {
   const [loginFormValues, setLoginFormValues] = useState({
     email: "",
     password: ""
   });
-  const [user, setUser] = useState();
   const [error, setError] = useState(null);
+  const [user, setUser] = useLocalStorage("user", null);
 
   const axiosOnLogin = e => {
     axiosWithAuth()
       .get("https://split-the-bill-api.herokuapp.com/api/users/profile")
       .then(response => {
         setUser(response.data.user);
+        window.location.reload();
       })
       .catch(err => {
         setError(err.message);
