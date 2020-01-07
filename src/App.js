@@ -12,7 +12,6 @@ import axiosWithAuth from "./custom-hooks/axiosWithAuth";
 import axios from "axios";
 import useLocalStorage from "./custom-hooks/useLocalStorage";
 
-
 function App(props) {
   const [loginFormValues, setLoginFormValues] = useState({
     email: "",
