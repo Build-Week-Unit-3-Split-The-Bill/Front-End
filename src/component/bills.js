@@ -1,17 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
+import { Route } from 'react-router-dom'
+import Bill from './bill'
 
 import styled from "styled-components";
 import NewBill from "./newBill";
 import BillCard from "./BillCard";
-
-const Id = styled.p`
-  font-size: 1.2rem;
-  margin-right: 20px;
-`;
-
-const Date = styled.p`
-  font-size: 1.2rem;
-`;
 
 const FormContainer = styled.div``;
 
@@ -27,10 +20,13 @@ export default function Bills(props) {
 
   return (
     <div className="bills-container">
-      <div className='slider-top-row'>
+        <Route exact path="/dashboard/bills/:id" render={(props) => (<Bill {...props} user={props.curr} /> )}/>
+      
         <h3 className='bills-headings'>My Bills</h3>
-        <img src='https://i.imgur.com/spe9HXm.png' width='100px' />
-      </div>
+        <div>
+        <img className='slide-arrow' src='https://i.imgur.com/spe9HXm.png' width='100px' />
+        </div>
+      
       <h3 className="bills-headings">{props.user.firstName} Bills</h3>
       <FormContainer>
         <div>
@@ -45,13 +41,13 @@ export default function Bills(props) {
         {bills.map((curr, index) => {
           return (
             <div key={index}>
-              <BillCard curr={curr} />
+              <BillCard index={index} curr={curr} />
             </div>
           );
         })}
       </div>
       <h3 className="bills-headings">Bills to Pay</h3>
-      <div className="all-bills">
+      {/* <div className="all-bills">
         {splits.map((curr, index) => {
           return (
             <div key={index}>
@@ -59,7 +55,7 @@ export default function Bills(props) {
             </div>
           );
         })}
-      </div>
+      </div> */}
     </div>
   );
 }
