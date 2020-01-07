@@ -18,23 +18,26 @@ function Register(props) {
 
   const handleSubmit = e => {
     e.preventDefault();
-    if (e.target.password.value === e.target.confirm_password.value) {
-      axios
-        .post("https://split-the-bill-api.herokuapp.com/api/auth/register", {
-          firstName: registerForm.first_name,
-          lastName: registerForm.last_name,
-          email: registerForm.email,
-          password: registerForm.password
-        })
-        .then(response => {
-          console.log(response.data);
-          console.log(props);
-          props.history.push("/login");
-        })
-        .catch(error => {
-          alert(error.message);
-        });
-    }
+    axios
+      .post("https://split-the-bill-api.herokuapp.com/api/auth/register", {
+        firstName: registerForm.first_name,
+        lastName: registerForm.last_name,
+        email: registerForm.email,
+        password: registerForm.password
+      })
+      .then(response => {
+        localStorage.setItem("token", response.data.token);
+        props.history.push("/dashboard");
+      })
+      .catch(error => {
+        if (error.message == "Request failed with status code 409") {
+          alert(`This email has already been registered.`);
+        } else if (error.message == "Request failed with status code 422") {
+          alert("Your password must be at least 6 characters.");
+        } else {
+          console.log(error.message);
+        }
+      });
   };
 
   return (
@@ -71,12 +74,6 @@ function Register(props) {
           name="password"
           onChange={formChange}
           value={registerForm.password}
-        />
-
-        <input
-          type="password"
-          placeholder="re-type password"
-          name="confirm_password"
         />
 
         <input type="submit" />

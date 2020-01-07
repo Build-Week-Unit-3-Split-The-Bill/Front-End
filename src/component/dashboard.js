@@ -1,29 +1,13 @@
-import React, { useState, useCallback, useEffect } from "react";
+import React, { useState, useCallback } from "react";
 import { useTransition, animated } from "react-spring";
 import Friends from "./friends";
 import Bills from "./bills";
-import axiosWithAuth from "../custom-hooks/axiosWithAuth";
 
 export default function Dashboard(props) {
-  const [user, setUser] = useState();
-  const [error, setError] = useState(null);
-
-  useEffect(() => {
-    axiosWithAuth()
-      .get("https://split-the-bill-api.herokuapp.com/api/users/profile")
-      .then(response => {
-        console.log(response);
-        setUser(response.data.user);
-      })
-      .catch(err => {
-        setError(err.message);
-      });
-  }, []);
-
   const pages = [
     ({ style }) => (
       <animated.div style={{ ...style, background: "#EC576B", color: "white" }}>
-        <Bills {...props} user={user} />
+        <Bills {...props} user={props.user} />
       </animated.div>
     ),
     ({ style }) => (
@@ -46,7 +30,7 @@ export default function Dashboard(props) {
     leave: { opacity: 1, transform: "translate3d(-50%,0,0)" }
   });
 
-  if (!user) {
+  if (!props.user) {
     return (
       <div>
         <p>Loading...</p>
