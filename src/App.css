@@ -225,3 +225,8 @@ Stark: #E7DFDD
   font-size: 2rem;
   margin: 10% 0;
 }
+
+.slider-top-row {
+  display: flex;
+  margin: 0 auto;
+}
