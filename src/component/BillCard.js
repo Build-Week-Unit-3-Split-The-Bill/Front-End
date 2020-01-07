@@ -2,7 +2,6 @@ import React from "react";
 
 function BillCard(props) {
   const splits = props.curr.splits;
-  console.log(props);
 
   return (
     <div className="bill-card">
