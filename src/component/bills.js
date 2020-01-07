@@ -4,6 +4,7 @@ import styled from "styled-components";
 import NewBill from "./newBill";
 import BillCard from "./BillCard";
 
+<<<<<<< HEAD
 const Id = styled.p`
   font-size: 1.2rem;
   margin-right: 20px;
@@ -14,6 +15,9 @@ const Date = styled.p`
 `;
 
 const FormContainer = styled.div``;
+=======
+function Bills() {
+>>>>>>> c9899a44f8f4f70ec0c2377f9b4eddc0b32b4abf
 
 export default function Bills(props) {
   console.log(props);
@@ -26,6 +30,7 @@ export default function Bills(props) {
   });
 
   return (
+<<<<<<< HEAD
     <div className="bills-container">
       <h3>My Bills</h3>
       <FormContainer>
@@ -55,6 +60,31 @@ export default function Bills(props) {
             </div>
           );
         })}
+=======
+    <div className='bills-container'>
+      <h3 className='bills-heading'>My Bills</h3>
+      <div className='all-bills'>
+      {state.map((curr, index) => {
+        return(
+          <div className='bill-card' key={index}>
+            <div className='bill-top-row'>
+            <div className='bill-left-corner'>
+            <img alt='people icon' src='https://i.imgur.com/74ww7EK.png' width='32px' height='32px' />
+            <p className='party-count'>{curr.split_people_count}</p>
+            </div>  
+            <p className='bill-id'>{curr.id}</p> 
+            </div>
+            <p className='split-sum'>{Number.parseFloat(curr.split_sum).toFixed(2)}$</p>
+            <p className='total-sum'>(Total: {Number.parseFloat(curr.split_sum * curr.split_people_count).toFixed(2)}$)</p>
+            <p>{curr.created_at}</p>
+            <div className='bill-buttons'>
+              <button>Remove</button>
+              <button>Edit</button>
+            </div>
+          </div>
+        )
+      })}
+>>>>>>> c9899a44f8f4f70ec0c2377f9b4eddc0b32b4abf
       </div>
     </div>
   );
