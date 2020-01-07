@@ -25,24 +25,24 @@ function NewBill(props) {
   };
 
   return (
-    <div className="bill-card">
+    <div className="new-bill">
       <h3>Create a New bill</h3>
       <form className="forms" onSubmit={handleSubmit}>
+        <p>Bill Name:</p>
         <input
           type="text"
           name="title"
-          placeholder="Bill name..."
           value={props.newBillValues.title}
           onChange={handleChange}
         />
+        <p>Total Bill in USD:</p>
         <input
           type="number"
           name="amount"
-          placeholder="Total Bill amount"
           value={props.newBillValues.amount}
           onChange={handleChange}
         />
-        <input type="submit" />
+        <input type="submit" className='new-bill-submit' />
       </form>
     </div>
   );
