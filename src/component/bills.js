@@ -27,7 +27,7 @@ export default function Bills(props) {
 
   return (
     <div className="bills-container">
-      <h3 className='bills-headings'>My Bills</h3>
+      <h3 className="bills-headings">{props.user.firstName} Bills</h3>
       <FormContainer>
         <div>
           <NewBill
@@ -46,7 +46,7 @@ export default function Bills(props) {
           );
         })}
       </div>
-      <h3 className='bills-headings'>Bills to Pay</h3>
+      <h3 className="bills-headings">Bills to Pay</h3>
       <div className="all-bills">
         {splits.map((curr, index) => {
           return (

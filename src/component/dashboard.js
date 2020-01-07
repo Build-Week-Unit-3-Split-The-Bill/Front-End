@@ -4,7 +4,7 @@ import Friends from "./friends";
 import Bills from "./bills";
 
 export default function Dashboard(props) {
-  console.log(`im working`, props, props.user);
+  console.log(`im working`, props);
   const pages = [
     ({ style }) => (
       <animated.div style={{ ...style, background: "#EC576B", color: "white" }}>
