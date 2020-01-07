@@ -6,8 +6,8 @@ Stark: #E7DFDD
 
 .App {
   text-align: center;
-  font-family: 'Lato';
-  color: #E7DFDD
+  font-family: "Lato";
+  color: #e7dfdd;
 }
 
 .logo {
@@ -18,25 +18,25 @@ Stark: #E7DFDD
 
 .navbar {
   height: 120px;
-  background-color: #0E0B16;
+  background-color: #0e0b16;
   padding-top: 30px;
 }
 
 .navbar button {
   background-color: transparent;
   border: 0px;
-  color: #E7DFDD;
-  font-family: 'Lato';
+  color: #e7dfdd;
+  font-family: "Lato";
   font-size: 1rem;
 }
 
 .nav a {
   text-decoration: none;
-  color: #E7DFDD;
+  color: #e7dfdd;
 }
 
 .nav a:hover {
-  color: #A239CA;
+  color: #a239ca;
 }
 
 .nav {
@@ -50,13 +50,13 @@ Stark: #E7DFDD
   list-style-type: none;
 }
 
-.nav-links li{
+.nav-links li {
   margin-right: 3vw;
 }
 
 .footer {
   height: 100px;
-  background-color: #0E0B16;
+  background-color: #0e0b16;
   margin-top: 600px; /*  Delete later */
   padding-top: 50px;
 }
@@ -69,7 +69,7 @@ Stark: #E7DFDD
 }
 
 .forms input {
-    margin-top: 30px;
+  margin-top: 30px;
 }
 
 .simple-trans-main > div {
@@ -87,7 +87,7 @@ Stark: #E7DFDD
 }
 
 .register {
-  color: #0E0B16;
+  color: #0e0b16;
 }
 
 .bills-container {
@@ -108,7 +108,6 @@ Stark: #E7DFDD
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  
 }
 
 .bills-container::-webkit-scrollbar {
@@ -118,11 +117,12 @@ Stark: #E7DFDD
 .bill-card {
   width: 30vw;
   max-width: 300px;
-  max-height: 450px;
-  height: 40vw;
+  /* max-height: 450px; */
+  /* height: 40vw; */
   border: 1px solid white;
   margin: 0 1vw;
   margin-bottom: 20px;
+  z-index: 1;
 }
 
 .id-and-peoplecount {
@@ -142,7 +142,7 @@ Stark: #E7DFDD
   height: 3vw;
 }
 
-.party-size p{
+.party-size p {
   margin-left: 1vw;
 }
 
@@ -153,4 +153,12 @@ Stark: #E7DFDD
 .total-sum {
   margin-top: -30px;
   margin-bottom: 150px;
+}
+
+.displayBillForm {
+  display: block;
+}
+
+.removeBillForm {
+  display: none;
 }
