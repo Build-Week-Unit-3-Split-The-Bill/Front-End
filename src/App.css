@@ -6,8 +6,8 @@ Stark: #E7DFDD
 
 .App {
   text-align: center;
-  font-family: 'Lato';
-  color: #E7DFDD
+  font-family: "Lato";
+  color: #e7dfdd;
 }
 
 .logo {
@@ -18,25 +18,25 @@ Stark: #E7DFDD
 
 .navbar {
   height: 120px;
-  background-color: #0E0B16;
+  background-color: #0e0b16;
   padding-top: 30px;
 }
 
 .navbar button {
   background-color: transparent;
   border: 0px;
-  color: #E7DFDD;
-  font-family: 'Lato';
+  color: #e7dfdd;
+  font-family: "Lato";
   font-size: 1rem;
 }
 
 .nav a {
   text-decoration: none;
-  color: #E7DFDD;
+  color: #e7dfdd;
 }
 
 .nav a:hover {
-  color: #A239CA;
+  color: #a239ca;
 }
 
 .nav {
@@ -50,14 +50,19 @@ Stark: #E7DFDD
   list-style-type: none;
 }
 
-.nav-links li{
+.nav-links li {
   margin-right: 3vw;
 }
 
 .footer {
   height: 100px;
+<<<<<<< HEAD
+  background-color: #0e0b16;
+  margin-top: 600px; /*  Delete later */
+=======
   background-color: #0E0B16;
   margin-top: 800px; /*  Delete later */
+>>>>>>> c9899a44f8f4f70ec0c2377f9b4eddc0b32b4abf
   padding-top: 50px;
 }
 
@@ -69,7 +74,7 @@ Stark: #E7DFDD
 }
 
 .forms input {
-    margin-top: 30px;
+  margin-top: 30px;
 }
 
 .simple-trans-main > div {
@@ -87,7 +92,7 @@ Stark: #E7DFDD
 }
 
 .register {
-  color: #0E0B16;
+  color: #0e0b16;
 }
 
 .bills-container {
@@ -122,12 +127,22 @@ Stark: #E7DFDD
 }
 
 .bill-card {
+<<<<<<< HEAD
+  width: 30vw;
+  max-width: 300px;
+  /* max-height: 450px; */
+  /* height: 40vw; */
+=======
   width: 20%; 
   height: 40%;
+>>>>>>> c9899a44f8f4f70ec0c2377f9b4eddc0b32b4abf
   border: 1px solid white;
   border-radius: 8px;
   margin: 0 1vw;
   margin-bottom: 20px;
+<<<<<<< HEAD
+  z-index: 1;
+=======
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -144,6 +159,7 @@ Stark: #E7DFDD
 
 .bill-id {
   margin-right: 3%;
+>>>>>>> c9899a44f8f4f70ec0c2377f9b4eddc0b32b4abf
 }
 
 .split-sum {
@@ -178,12 +194,17 @@ Stark: #E7DFDD
   padding: 5px;
 }
 
+<<<<<<< HEAD
+.party-size p {
+  margin-left: 1vw;
+=======
 /* Media queries */
 
 @media (max-width: 915px) {
   .bill-card {
     width: 28%;
   }
+>>>>>>> c9899a44f8f4f70ec0c2377f9b4eddc0b32b4abf
 }
 
 @media (max-width: 700px) {
@@ -192,6 +213,20 @@ Stark: #E7DFDD
   }
 }
 
+<<<<<<< HEAD
+.total-sum {
+  margin-top: -30px;
+  margin-bottom: 150px;
+}
+
+.displayBillForm {
+  display: block;
+}
+
+.removeBillForm {
+  display: none;
+}
+=======
 @media (max-width: 550px) {
   .bill-card {
     width: 70%;
@@ -199,3 +234,4 @@ Stark: #E7DFDD
     margin-bottom: 10%;
   }
 }
+>>>>>>> c9899a44f8f4f70ec0c2377f9b4eddc0b32b4abf
