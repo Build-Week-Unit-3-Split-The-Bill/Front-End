@@ -243,4 +243,10 @@ Stark: #E7DFDD
 
 .bill {
   color: black;
+  border: 1px solid black;
+  border-radius: 8px;
+  width: 60%;
+  margin: 0 auto;
+  margin-top: 5%;
+  
 }
