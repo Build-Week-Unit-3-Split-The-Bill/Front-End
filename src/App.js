@@ -11,6 +11,7 @@ import withAuthChecker from "./custom-hooks/withAuthChecker";
 import axiosWithAuth from "./custom-hooks/axiosWithAuth";
 import axios from "axios";
 import useLocalStorage from "./custom-hooks/useLocalStorage";
+import Bill from './component/bill'
 
 function App(props) {
   const [loginFormValues, setLoginFormValues] = useState({
@@ -110,6 +111,7 @@ function App(props) {
         render={props => withAuthChecker(allowAccess())}
       />
       <Route exact path="/register" render={props => <Register {...props} />} />
+      <Route path="/bills/:id" render={(props) => (<Bill {...props} user={user} /> )}/>
       <Footer />
     </div>
   );

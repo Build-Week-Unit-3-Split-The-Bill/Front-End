@@ -28,7 +28,7 @@ function Navbar(props) {
           <ul className="nav-links">
             {localStorage.getItem("token") != undefined ? (
               <li>
-                <button
+                <button className='logout-button'
                   onClick={() => {
                     localStorage.removeItem("token");
                     localStorage.removeItem("user");
@@ -45,6 +45,9 @@ function Navbar(props) {
             )}
             <Link to="/team">
               <li>TEAM</li>
+            </Link>
+            <Link to="/dashboard">
+              <li>DASHBOARD</li>
             </Link>
           </ul>
         </div>
