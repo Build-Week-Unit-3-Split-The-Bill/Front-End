@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { Route } from 'react-router-dom'
-import Bill from './bill'
+import { Route } from "react-router-dom";
+import Bill from "./bill";
 
 import styled from "styled-components";
 import NewBill from "./newBill";
@@ -20,13 +20,21 @@ export default function Bills(props) {
 
   return (
     <div className="bills-container">
-        <Route exact path="/dashboard/bills/:id" render={(props) => (<Bill {...props} user={props.curr} /> )}/>
-      
-        <h3 className='bills-headings'>My Bills</h3>
-        <div>
-        <img className='slide-arrow' src='https://i.imgur.com/spe9HXm.png' width='100px' />
-        </div>
-      
+      <Route
+        exact
+        path="/dashboard/bills/:id"
+        render={props => <Bill {...props} user={props.curr} />}
+      />
+
+      <h3 className="bills-headings">My Bills</h3>
+      <div>
+        <img
+          className="slide-arrow"
+          src="https://i.imgur.com/spe9HXm.png"
+          width="100px"
+        />
+      </div>
+
       <h3 className="bills-headings">{props.user.firstName} Bills</h3>
       <FormContainer>
         <div>
@@ -41,7 +49,7 @@ export default function Bills(props) {
         {bills.map((curr, index) => {
           return (
             <div key={index}>
-              <BillCard index={index} curr={curr} />
+              <BillCard index={index} curr={curr} {...props} />
             </div>
           );
         })}

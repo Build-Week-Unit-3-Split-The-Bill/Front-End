@@ -12,7 +12,6 @@ import axiosWithAuth from "./custom-hooks/axiosWithAuth";
 import axios from "axios";
 import useLocalStorage from "./custom-hooks/useLocalStorage";
 
-
 function App(props) {
   const [loginFormValues, setLoginFormValues] = useState({
     email: "",
@@ -20,6 +19,20 @@ function App(props) {
   });
   const [error, setError] = useState(null);
   const [user, setUser] = useLocalStorage("user", null);
+
+  const [allUsers, setAllUsers] = useLocalStorage("all-user", null);
+
+  const getAllUsers = e => {
+    axiosWithAuth()
+      .get("https://split-the-bill-api.herokuapp.com/api/users")
+      .then(response => {
+        setAllUsers(response.data.users);
+        console.log(allUsers);
+      })
+      .catch(error => {
+        props.setError(error.message);
+      });
+  };
 
   const axiosOnLogin = e => {
     axiosWithAuth()
@@ -44,6 +57,7 @@ function App(props) {
         localStorage.setItem("token", response.data.token);
         props.history.push("/dashboard");
         axiosOnLogin();
+        getAllUsers();
       })
       .catch(error => {
         setError(error);
@@ -58,7 +72,14 @@ function App(props) {
   };
 
   const allowAccess = e => {
-    return <Dashboard user={user} {...props} />;
+    return (
+      <Dashboard
+        user={user}
+        setError={setError}
+        allUsers={allUsers}
+        {...props}
+      />
+    );
   };
 
   return (

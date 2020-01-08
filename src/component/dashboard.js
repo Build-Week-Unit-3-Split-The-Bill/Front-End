@@ -3,13 +3,16 @@ import { useTransition, animated } from "react-spring";
 import Friends from "./friends";
 import Bills from "./bills";
 
-
-
 export default function Dashboard(props) {
   const pages = [
     ({ style }) => (
       <animated.div style={{ ...style, background: "#EC576B", color: "white" }}>
-        <Bills {...props} user={props.user} />
+        <Bills
+          {...props}
+          user={props.user}
+          allUser={props.allUsers}
+          setError={props.setError}
+        />
       </animated.div>
     ),
     ({ style }) => (
@@ -25,7 +28,10 @@ export default function Dashboard(props) {
   ];
 
   const [sliderIteration, setSliderIteration] = useState(0);
-  const onClick = useCallback(() => setSliderIteration(state => (state + 1) % 3), []);
+  const onClick = useCallback(
+    () => setSliderIteration(state => (state + 1) % 3),
+    []
+  );
   const transitions = useTransition(sliderIteration, p => p, {
     from: { opacity: 1, transform: "translate3d(100%,0,0)" },
     enter: { opacity: 1, transform: "translate3d(0%,0,0)" },

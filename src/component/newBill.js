@@ -24,6 +24,8 @@ function NewBill(props) {
       });
   };
 
+  const email = "emma@gmail.com";
+
   return (
     <div className="new-bill">
       <h3>Create a New bill</h3>
@@ -42,7 +44,12 @@ function NewBill(props) {
           value={props.newBillValues.amount}
           onChange={handleChange}
         />
-        <input type="submit" className='new-bill-submit' />
+        <a
+          href={`mailto:${email}?subject=Sign%20Up%20for%20Split%20the%20Bill!?body=This%20is%20the%20body!`}
+        >
+          Link text
+        </a>
+        <input type="submit" className="new-bill-submit" />
       </form>
     </div>
   );
