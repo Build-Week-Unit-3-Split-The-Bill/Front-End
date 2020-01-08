@@ -7,7 +7,12 @@ export default function Dashboard(props) {
   const pages = [
     ({ style }) => (
       <animated.div style={{ ...style, background: "#EC576B", color: "white" }}>
-        <Bills {...props} user={props.user} />
+        <Bills
+          {...props}
+          user={props.user}
+          allUser={props.allUsers}
+          setError={props.setError}
+        />
       </animated.div>
     ),
     ({ style }) => (

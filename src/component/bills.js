@@ -49,7 +49,7 @@ export default function Bills(props) {
         {bills.map((curr, index) => {
           return (
             <div key={index}>
-              <BillCard index={index} curr={curr} />
+              <BillCard index={index} curr={curr} {...props} />
             </div>
           );
         })}

@@ -31,8 +31,8 @@ function Navbar(props) {
                 <button
                   onClick={() => {
                     localStorage.removeItem("token");
+                    localStorage.removeItem("user");
                     props.history.push("/login");
-                    props.setUser(undefined);
                   }}
                 >
                   LOGOUT
