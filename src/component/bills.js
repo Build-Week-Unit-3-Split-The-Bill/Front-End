@@ -5,6 +5,7 @@ import Bill from "./bill";
 import styled from "styled-components";
 import NewBill from "./newBill";
 import BillCard from "./BillCard";
+import SplitCard from "./splitCard";
 
 const FormContainer = styled.div``;
 
@@ -17,14 +18,15 @@ export default function Bills(props) {
     amount: "",
     title: ""
   });
-
+  
+  console.log(splits);
   return (
     <div className="bills-container">
       <Route
         exact
         path="/dashboard/bills/:id"
         render={props => <Bill {...props} allUsers={props.allUser} user={props.curr} />}
-      />
+        />
 
       <h3 className="bills-headings">My Bills</h3>
       <div className='pointer' onClick={props.onClick}>
@@ -57,16 +59,16 @@ export default function Bills(props) {
           );
         })}
       </div>
-      <h3 className="bills-headings">Bills to Pay</h3>
-      {/* <div className="all-bills">
+      <h3 className="bills-headings">Bills to Pay ({splits.length})</h3>
+      <div className="all-bills">
         {splits.map((curr, index) => {
           return (
             <div key={index}>
-              <BillCard curr={curr} />
+              <SplitCard {...props} curr={curr}/>
             </div>
           );
         })}
-      </div> */}
+      </div>
     </div>
   );
 }
