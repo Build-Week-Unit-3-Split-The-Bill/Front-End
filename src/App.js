@@ -27,7 +27,6 @@ function App(props) {
       .get("https://split-the-bill-api.herokuapp.com/api/users")
       .then(response => {
         setAllUsers(response.data.users);
-        console.log(allUsers);
       })
       .catch(error => {
         props.setError(error.message);
@@ -75,6 +74,7 @@ function App(props) {
     return (
       <Dashboard
         user={user}
+        setUser={setUser}
         setError={setError}
         allUsers={allUsers}
         {...props}

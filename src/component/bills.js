@@ -42,6 +42,8 @@ export default function Bills(props) {
             newBillValues={newBillValues}
             setNewBillValues={setNewBillValues}
             bills={bills}
+            user={props.user}
+            setUser={props.setUser}
           />
         </div>
       </FormContainer>
