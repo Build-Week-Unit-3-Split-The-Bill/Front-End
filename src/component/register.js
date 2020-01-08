@@ -26,13 +26,13 @@ function Register(props) {
         password: registerForm.password
       })
       .then(response => {
-        localStorage.setItem("token", response.data.token);
-        props.history.push("/dashboard");
+        alert(`Thank you for registering. Please now login`);
+        props.history.push("/login");
       })
       .catch(error => {
-        if (error.message == "Request failed with status code 409") {
+        if (error.message === "Request failed with status code 409") {
           alert(`This email has already been registered.`);
-        } else if (error.message == "Request failed with status code 422") {
+        } else if (error.message === "Request failed with status code 422") {
           alert("Your password must be at least 6 characters.");
         } else {
           console.log(error.message);
