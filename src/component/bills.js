@@ -27,7 +27,7 @@ export default function Bills(props) {
       />
 
       <h3 className="bills-headings">My Bills</h3>
-      <div>
+      <div className='pointer' onClick={props.onClick}>
         <img
           className="slide-arrow"
           src="https://i.imgur.com/spe9HXm.png"

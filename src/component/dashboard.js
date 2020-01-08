@@ -2,29 +2,37 @@ import React, { useState, useCallback } from "react";
 import { useTransition, animated } from "react-spring";
 import Friends from "./friends";
 import Bills from "./bills";
+import Notification from './notification'
 
 export default function Dashboard(props) {
   console.log(props, `dashboard`);
   const pages = [
     ({ style }) => (
-      <animated.div style={{ ...style, background: "#EC576B", color: "white" }}>
+      <animated.div style={{ ...style, cursor: 'default', background: "#EC576B", color: "white" }}>
         <Bills
           {...props}
           user={props.user}
           setUser={props.setUser}
           allUser={props.allUsers} // TYPO!!
           setError={props.setError}
+          onClick={onClick}
         />
       </animated.div>
     ),
     ({ style }) => (
-      <animated.div style={{ ...style, background: "#F7CE3E", color: "white" }}>
-        <Friends />
+      <animated.div style={{ ...style, cursor: 'default', background: "#F7CE3E", color: "white" }}>
+        <Friends 
+        {...props}
+        onClick={onClick}
+        />
       </animated.div>
     ),
     ({ style }) => (
-      <animated.div style={{ ...style, background: "#4EC5C1", color: "white" }}>
-        NOTIFICATIONS
+      <animated.div style={{ ...style, cursor: 'default', background: "#4EC5C1", color: "white" }}>
+        <Notification 
+        {...props}
+        onClick={onClick}
+        />
       </animated.div>
     )
   ];
@@ -48,9 +56,8 @@ export default function Dashboard(props) {
     );
   }
   return (
-    <div>
+    <div className='dashboard'>
       <div className="simple-trans-main">
-        <button onClick={onClick}>></button>
         {transitions.map(({ item, props, key }) => {
           const Page = pages[item];
           return <Page key={key} style={props} />;

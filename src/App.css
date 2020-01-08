@@ -22,6 +22,14 @@ Stark: #E7DFDD
   padding-top: 30px;
 }
 
+button {
+  cursor: pointer;
+}
+
+.pointer {
+  cursor: pointer
+}
+
 .navbar button {
   background-color: transparent;
   border: 0px;
