@@ -2,6 +2,7 @@ import React from "react";
 import axiosWithAuth from "../custom-hooks/axiosWithAuth";
 
 function NewBill(props) {
+  console.log(`newbills`, props);
   const handleChange = e => {
     props.setNewBillValues({
       ...props.newBillValues,
@@ -18,10 +19,24 @@ function NewBill(props) {
       })
       .then(response => {
         console.log(response);
+        props.setUser({
+          ...props.user,
+          bills: [...props.user.bills, { ...response.data.bill, splits: [] }]
+        });
       })
       .catch(err => {
         console.log(err);
       });
+  };
+
+  const handleClick = e => {
+    console.log(`event happened`);
+    return (
+      <div>
+        <input type="email" name="email" placeholder="email" />
+        <input type="number" name="share" />
+      </div>
+    );
   };
 
   const email = "emma@gmail.com";
@@ -44,12 +59,15 @@ function NewBill(props) {
           value={props.newBillValues.amount}
           onChange={handleChange}
         />
+        <p>Splits:</p>
+        <button onClick={handleClick}>+</button>
+
+        <input type="submit" className="new-bill-submit" />
         <a
-          href={`mailto:${email}?subject=Sign%20Up%20for%20Split%20the%20Bill!?body=This%20is%20the%20body!`}
+          href={`mailto:${email}?subject=Sign%20Up%20for%20Split%20the%20Bill!&amp;body=This%20is%20the%20body!`}
         >
           Link text
         </a>
-        <input type="submit" className="new-bill-submit" />
       </form>
     </div>
   );

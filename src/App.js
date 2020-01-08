@@ -11,7 +11,7 @@ import withAuthChecker from "./custom-hooks/withAuthChecker";
 import axiosWithAuth from "./custom-hooks/axiosWithAuth";
 import axios from "axios";
 import useLocalStorage from "./custom-hooks/useLocalStorage";
-import Bill from './component/bill'
+import Bill from "./component/bill";
 
 function App(props) {
   const [loginFormValues, setLoginFormValues] = useState({
@@ -28,7 +28,6 @@ function App(props) {
       .get("https://split-the-bill-api.herokuapp.com/api/users")
       .then(response => {
         setAllUsers(response.data.users);
-        console.log(allUsers);
       })
       .catch(error => {
         props.setError(error.message);
@@ -62,6 +61,7 @@ function App(props) {
       })
       .catch(error => {
         setError(error);
+        alert(`Invalid login details. Please enter a valid login or register`);
       });
   };
 
@@ -76,6 +76,7 @@ function App(props) {
     return (
       <Dashboard
         user={user}
+        setUser={setUser}
         setError={setError}
         allUsers={allUsers}
         {...props}
@@ -111,7 +112,10 @@ function App(props) {
         render={props => withAuthChecker(allowAccess())}
       />
       <Route exact path="/register" render={props => <Register {...props} />} />
-      <Route path="/bills/:id" render={(props) => (<Bill {...props} user={user} /> )}/>
+      <Route
+        path="/bills/:id"
+        render={props => <Bill {...props} user={user} />}
+      />
       <Footer />
     </div>
   );
