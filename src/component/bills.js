@@ -23,7 +23,7 @@ export default function Bills(props) {
       <Route
         exact
         path="/dashboard/bills/:id"
-        render={props => <Bill {...props} user={props.curr} />}
+        render={props => <Bill {...props} allUsers={props.allUser} user={props.curr} />}
       />
 
       <h3 className="bills-headings">My Bills</h3>
@@ -32,6 +32,7 @@ export default function Bills(props) {
           className="slide-arrow"
           src="https://i.imgur.com/spe9HXm.png"
           width="100px"
+          alt='animation logo'
         />
       </div>
 
