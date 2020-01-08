@@ -231,3 +231,16 @@ Stark: #E7DFDD
   left: 35%;
   bottom: 50%;
 }
+
+.split-user {
+  border: 1px solid white;
+}
+
+
+.logout-button {
+  cursor: pointer;
+}
+
+.bill {
+  color: black;
+}

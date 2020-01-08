@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from 'react-router-dom'
 
 function BillCard(props) {
   const splits = props.curr.splits;
@@ -8,6 +9,7 @@ function BillCard(props) {
       <h3>{props.curr.title}</h3>
       <h4>${props.curr.amount}</h4>
       <h4>Status: {props.curr.status}</h4>
+      <Link to={`/bills/${props.curr.id}`}><button>Bill Details</button></Link>
       <button>Edit</button>
       <button>Delete</button>
       <div>
@@ -17,7 +19,7 @@ function BillCard(props) {
             user => user.id === curr.userId
           );
           return (
-            <div key={index}>
+            <div key={index} className='split-user'>
               <h4>
                 Name: {shareUser[0].firstName} {shareUser[0].lastName}
               </h4>
