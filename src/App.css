@@ -27,7 +27,7 @@ button {
 }
 
 .pointer {
-  cursor: pointer
+  cursor: pointer;
 }
 
 .navbar button {
@@ -64,7 +64,7 @@ button {
 
 .footer {
   height: 100px;
-  background-color: #0E0B16;
+  background-color: #0e0b16;
   margin-top: 800px; /*  Delete later */
   padding-top: 50px;
 }
@@ -150,7 +150,6 @@ button {
   margin-bottom: 20%;
 }
 
-
 .bill-top-row {
   display: flex;
   flex-direction: row;
@@ -161,14 +160,14 @@ button {
   margin-bottom: 5%;
 }
 
-.bill-buttons button{
+.bill-buttons button {
   margin-right: 2%;
   margin-left: 2%;
   background-color: transparent;
   color: white;
   border: 1px solid white;
   border-radius: 8px;
-  font-family: 'Lato';
+  font-family: "Lato";
   font-size: 1.3rem;
   padding: 5px;
 }
@@ -194,7 +193,7 @@ button {
   margin-bottom: 5%;
   border: 1px solid white;
   background: transparent;
-  font-family: 'Lato';
+  font-family: "Lato";
   color: white;
   padding: 4px 8px;
   border-radius: 5px;
@@ -221,7 +220,7 @@ button {
   width: 60%;
   margin: 0 auto;
   background-color: transparent;
-  font-family: 'Lato';
+  font-family: "Lato";
   color: white;
   border: 1px solid white;
   padding: 4px 8px;
@@ -243,7 +242,6 @@ button {
 .split-user {
   border: 1px solid white;
 }
-
 
 .logout-button {
   cursor: pointer;
@@ -309,7 +307,7 @@ button {
   padding: 10px;
   margin-top: 10%;
   border-radius: 8px;
-  font-family: 'Lato';
+  font-family: "Lato";
   font-size: 1rem;
 }
 
@@ -319,5 +317,9 @@ button {
 }
 
 .login {
+  color: black;
+}
+
+.edit-bill {
   color: black;
 }
