@@ -43,9 +43,6 @@ function Navbar(props) {
                 <li>LOGIN</li>
               </Link>
             )}
-            <Link to="/team">
-              <li>TEAM</li>
-            </Link>
             <Link to="/dashboard">
               <li>DASHBOARD</li>
             </Link>

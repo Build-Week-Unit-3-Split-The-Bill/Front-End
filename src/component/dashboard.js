@@ -31,6 +31,9 @@ export default function Dashboard(props) {
       <animated.div style={{ ...style, cursor: 'default', background: "#4EC5C1", color: "white" }}>
         <Notification 
         {...props}
+        user={props.user}
+        setUser={props.setUser}
+        allUser={props.allUsers}
         onClick={onClick}
         />
       </animated.div>
