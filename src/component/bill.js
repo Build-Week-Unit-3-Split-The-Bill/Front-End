@@ -36,8 +36,9 @@ function Bill(props) {
         <br /> {thisBill[0].updatedAt}
       </p>
       <Link to={`/bills/${thisBill[0].id}/edit`}>
-        <button>Edit</button>
+        <button className='bill-card-button-new'>Edit</button>
       </Link>
+      <div className='spacer'></div>
     </div>
   );
 }

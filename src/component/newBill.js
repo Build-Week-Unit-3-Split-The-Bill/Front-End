@@ -51,11 +51,6 @@ function NewBill(props) {
         />
 
         <input type="submit" className="new-bill-submit" />
-        <a
-          href={`mailto:${email}?subject=Sign%20Up%20for%20Split%20the%20Bill!&amp;body=This%20is%20the%20body!`}
-        >
-          Link text
-        </a>
       </form>
     </div>
   );
