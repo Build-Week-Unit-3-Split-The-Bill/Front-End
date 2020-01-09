@@ -113,7 +113,7 @@ function App(props) {
       />
       <Route exact path="/register" render={props => <Register {...props} />} />
       <Route
-        path="/bills/:id"
+        exact path="/bills/:id"
         render={props => <Bill {...props} user={user} />}
       />
       <Footer />

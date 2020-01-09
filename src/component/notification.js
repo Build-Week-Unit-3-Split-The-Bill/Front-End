@@ -1,7 +1,8 @@
 import React from 'react';
-
+import NotificationCard from './notificationCard';
 
 function Notifications(props) {
+
   return (
     <div>
       <div className='pointer' onClick={props.onClick}>
@@ -11,7 +12,7 @@ function Notifications(props) {
           width="100px"
           alt='animation logo'
         />
-      </div>
+       </div>
     </div>
   );
 }
