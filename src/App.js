@@ -46,6 +46,7 @@ function App(props) {
       .then(response => {
         setUser(response.data.user);
         window.location.reload();
+        console.log(user);
       })
       .catch(err => {
         setError(err.message);
@@ -88,6 +89,7 @@ function App(props) {
         {...props}
         newBillValues={newBillValues}
         setNewBillValues={setNewBillValues}
+        axiosOnLogin={axiosOnLogin}
       />
     );
   };
@@ -121,12 +123,8 @@ function App(props) {
       />
       <Route exact path="/register" render={props => <Register {...props} />} />
       <Route
-<<<<<<< HEAD
         exact
         path="/bills/:id"
-=======
-        exact path="/bills/:id"
->>>>>>> 9760b651f31814c4a34db2613322b3c8be588b63
         render={props => <Bill {...props} user={user} />}
       />
       <Route

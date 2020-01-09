@@ -5,6 +5,7 @@ export default function EditBill(props) {
   const getThisBill = e =>
     props.user.bills.filter(bill => bill.id === props.match.params.id);
   const thisBill = getThisBill();
+  const allEmails = props.allUsers.map(user => user.email);
 
   useEffect(() => {
     getThisBill();
@@ -12,6 +13,7 @@ export default function EditBill(props) {
 
   const [newEmail, setNewEmail] = useState("");
   const [addedPeopleDetails, setAddedPeopleDetails] = useState([]);
+  const [displayAddedEmails, setDisplayAddedEmails] = useState([]);
 
   const handleChange = e => {
     setNewEmail(e.target.value);
@@ -19,7 +21,7 @@ export default function EditBill(props) {
 
   const handleAdd = e => {
     const user = props.allUsers.filter(user => user.email === newEmail);
-    if (user === undefined || user === []) {
+    if (!allEmails.includes(newEmail)) {
       alert(`This person doesn't current have an account. Send them an invite`);
     } else {
       setAddedPeopleDetails([...addedPeopleDetails, user]);
@@ -28,7 +30,7 @@ export default function EditBill(props) {
   };
 
   const handleSubmit = e => {
-    e.preventDefault();
+    // e.preventDefault();
     const userIds = addedPeopleDetails.map(user => user[0].id);
     axiosWithAuth()
       .post(
@@ -36,14 +38,20 @@ export default function EditBill(props) {
         { splitters: userIds }
       )
       .then(response => {
+        let splitsArray = response.data.splits;
+        splitsArray = splitsArray.map(user => user.id);
+        setDisplayAddedEmails(splitsArray);
         console.log(response);
-        console.log(thisBill);
-        getThisBill();
+        console.log(thisBill[0]);
+        props.axiosOnLogin();
       })
       .catch(error => {
         props.setError(error);
+        console.log(error);
       });
   };
+
+  let getSplitDetails;
 
   return (
     <div className="edit-bill">
@@ -64,27 +72,40 @@ export default function EditBill(props) {
                 <th>Name</th>
                 <th>Left to Pay</th>
                 <th>Paid</th>
+                <th>Status</th>
               </tr>
-              {!thisBill[0].splits.length || thisBill[0].splits.length === 0 ? (
-                <tr>
-                  <th>No splits assigned</th>
-                </tr>
-              ) : (
-                thisBill.splits.map((curr, index) => {
-                  const getSplitDetails = props.allUsers.filter(
-                    user => curr.userId === user.id
-                  );
-                  return (
-                    <tr key="index">
-                      <th>
-                        {getSplitDetails.firstName} {getSplitDetails.lastName}
-                      </th>
-                      <th>Left to Pay</th>
-                      <th>Paid</th>
-                    </tr>
-                  );
-                })
-              )}
+              {thisBill[0].splits.map((curr, index) => {
+                const getSplitDetails = props.allUsers.filter(
+                  user => curr.userId === user.id
+                );
+                console.log(curr, getSplitDetails, props.allUsers);
+                return (
+                  <tr key={index}>
+                    <th>
+                      {getSplitDetails[0].firstName}{" "}
+                      {getSplitDetails[0].lastName}
+                    </th>
+                    <th>{curr.amount}</th>
+                    <th>{curr.amountPaid}</th>
+                    <th>{curr.status}</th>
+                  </tr>
+                );
+              })}
+              {displayAddedEmails.map((curr, index) => {
+                getSplitDetails = props.allUsers.filter(
+                  user => curr.userId === user.id
+                );
+                return (
+                  <tr key={index}>
+                    <th>
+                      {getSplitDetails.firstName} {getSplitDetails.lastName}
+                    </th>
+                    <th>{curr.amount}</th>
+                    <th>{curr.amountPaid}</th>
+                    <th>{curr.status}</th>
+                  </tr>
+                );
+              })}
             </tbody>
           </table>
           <span>email</span>

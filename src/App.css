@@ -27,7 +27,7 @@ button {
 }
 
 .pointer {
-  cursor: pointer
+  cursor: pointer;
 }
 
 .navbar button {
@@ -269,11 +269,6 @@ button {
   margin-bottom: 2%;
 }
 
-<<<<<<< HEAD
-.edit-bill {
-  color: black;
-}
-=======
 .notification-grid {
   display: flex;
   flex-direction: column;
@@ -312,7 +307,7 @@ button {
   padding: 10px;
   margin-top: 10%;
   border-radius: 8px;
-  font-family: 'Lato';
+  font-family: "Lato";
   font-size: 1rem;
 }
 
@@ -324,4 +319,7 @@ button {
 .login {
   color: black;
 }
->>>>>>> 9760b651f31814c4a34db2613322b3c8be588b63
+
+.edit-bill {
+  color: black;
+}

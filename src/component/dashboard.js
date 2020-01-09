@@ -2,43 +2,57 @@ import React, { useState, useCallback } from "react";
 import { useTransition, animated } from "react-spring";
 import Friends from "./friends";
 import Bills from "./bills";
-import Notification from './notification'
+import Notification from "./notification";
 
 export default function Dashboard(props) {
+  console.log(props, `dashboard`);
   const pages = [
     ({ style }) => (
-      <animated.div style={{ ...style, cursor: 'default', background: "#EC576B", color: "white" }}>
+      <animated.div
+        style={{
+          ...style,
+          cursor: "default",
+          background: "#EC576B",
+          color: "white"
+        }}
+      >
         <Bills
           {...props}
           user={props.user}
           setUser={props.setUser}
           allUser={props.allUsers} // TYPO!!
           setError={props.setError}
-<<<<<<< HEAD
-          newBillValues={props.newBillValues}
-          setNewBillValues={props.setNewBillValues}
-=======
           onClick={onClick}
->>>>>>> 9760b651f31814c4a34db2613322b3c8be588b63
         />
       </animated.div>
     ),
     ({ style }) => (
-      <animated.div style={{ ...style, cursor: 'default', background: "#F7CE3E", color: "white" }}>
-        <Friends 
-        {...props}
-        onClick={onClick}
-        />
+      <animated.div
+        style={{
+          ...style,
+          cursor: "default",
+          background: "#F7CE3E",
+          color: "white"
+        }}
+      >
+        <Friends {...props} onClick={onClick} />
       </animated.div>
     ),
     ({ style }) => (
-      <animated.div style={{ ...style, cursor: 'default', background: "#4EC5C1", color: "white" }}>
-        <Notification 
-        {...props}
-        user={props.user}
-        setUser={props.setUser}
-        allUser={props.allUsers}
-        onClick={onClick}
+      <animated.div
+        style={{
+          ...style,
+          cursor: "default",
+          background: "#4EC5C1",
+          color: "white"
+        }}
+      >
+        <Notification
+          {...props}
+          user={props.user}
+          setUser={props.setUser}
+          allUser={props.allUsers}
+          onClick={onClick}
         />
       </animated.div>
     )
@@ -63,7 +77,7 @@ export default function Dashboard(props) {
     );
   }
   return (
-    <div className='dashboard'>
+    <div className="dashboard">
       <div className="simple-trans-main">
         {transitions.map(({ item, props, key }) => {
           const Page = pages[item];

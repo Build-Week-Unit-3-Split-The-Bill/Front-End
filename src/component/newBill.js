@@ -1,14 +1,12 @@
 import React from "react";
 import axiosWithAuth from "../custom-hooks/axiosWithAuth";
-import axios from "axios";
 
 function NewBill(props) {
-  console.log(`newbills`, props);
-  const handleChange = e => {
-    e.preventDefault();
+  const handleChange = event => {
+    event.preventDefault();
     props.setNewBillValues({
       ...props.newBillValues,
-      [e.target.name]: e.target.value
+      [event.target.name]: event.target.value
     });
   };
 

@@ -10,37 +10,26 @@ import SplitCard from "./splitCard";
 const FormContainer = styled.div``;
 
 export default function Bills(props) {
-  console.log(props);
-
   const bills = props.user.bills;
   const splits = props.user.splits;
 
-<<<<<<< HEAD
-=======
   const [newBillValues, setNewBillValues] = useState({
     amount: "",
     title: ""
   });
-  
-  console.log(splits);
->>>>>>> 9760b651f31814c4a34db2613322b3c8be588b63
+
   return (
     <div className="bills-container">
       <Route
         exact
         path="/dashboard/bills/:id"
-<<<<<<< HEAD
         render={props => (
-          <Bill {...props} allUsers={props.allUser} user={props.user} />
+          <Bill {...props} allUsers={props.allUser} user={props.curr} />
         )}
       />
-=======
-        render={props => <Bill {...props} allUsers={props.allUser} user={props.curr} />}
-        />
->>>>>>> 9760b651f31814c4a34db2613322b3c8be588b63
 
       <h3 className="bills-headings">My Bills</h3>
-      <div className='pointer' onClick={props.onClick}>
+      <div className="pointer" onClick={props.onClick}>
         <img
           className="slide-arrow"
           src="https://i.imgur.com/spe9HXm.png"
@@ -53,8 +42,8 @@ export default function Bills(props) {
       <FormContainer>
         <div>
           <NewBill
-            newBillValues={props.newBillValues}
-            setNewBillValues={props.setNewBillValues}
+            newBillValues={newBillValues}
+            setNewBillValues={setNewBillValues}
             bills={bills}
             user={props.user}
             setUser={props.setUser}
@@ -75,7 +64,11 @@ export default function Bills(props) {
         {splits.map((curr, index) => {
           return (
             <div key={index}>
-              <SplitCard {...props} curr={curr}/>
+              <SplitCard
+                {...props}
+                curr={curr}
+                axiosOnLogin={props.axiosOnLogin}
+              />
             </div>
           );
         })}
