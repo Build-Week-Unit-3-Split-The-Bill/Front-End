@@ -27,32 +27,14 @@ function BillCard(props) {
       <h3>{props.curr.title}</h3>
       <h4>${props.curr.amount}</h4>
       <h4>Status: {props.curr.status}</h4>
+      <h4>Splits: {props.curr.splits.length}</h4>
       <Link to={`/bills/${props.curr.id}`}>
-        <button className='bill-card-button'>Bill Details</button>
+        <button className="bill-card-button">Bill Details</button>
       </Link>
-      <button className='bill-card-button' onClick={handleDelete}>Delete</button>
-      <div>
-        <h4>Splits:</h4>
-        {!splits.length ? (
-          <div>No people assigned</div>
-        ) : (
-          splits.map((curr, index) => {
-            const shareUser = props.allUsers.filter(
-              user => user.id === curr.userId
-            );
-            return (
-              <div key={index}>
-                <h4>
-                  Name: {shareUser[0].firstName} {shareUser[0].lastName}
-                </h4>
-                <h4>Left to pay: {curr.amount}</h4>
-                <h4>Amount paid: {curr.amountPaid}</h4>
-                <h4>Status: {curr.status}</h4>
-              </div>
-            );
-          })
-        )}
-      </div>
+      <button onClick={handleDelete} className="bill-card-button">
+        Delete
+      </button>
+      <div></div>
     </div>
   );
 }
