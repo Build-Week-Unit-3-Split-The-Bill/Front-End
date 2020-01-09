@@ -3,7 +3,8 @@ import { Link } from "react-router-dom";
 
 function Login(props) {
   return (
-    <div>
+    <div className='login'>
+      <h1>Login</h1>
       <form className="forms" onSubmit={props.handleSubmit}>
         <input
           onChange={props.handleChange}
@@ -20,8 +21,8 @@ function Login(props) {
           placeholder="Password"
         />
         <input type="submit" id="submit" />
-        <Link to="/register">
-          <button>Register</button>
+        <Link className='link-no-css' to="/register">
+          <p className='register-button'>Sign Up</p>
         </Link>
       </form>
     </div>

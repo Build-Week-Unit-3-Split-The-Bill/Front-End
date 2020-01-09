@@ -22,6 +22,14 @@ Stark: #E7DFDD
   padding-top: 30px;
 }
 
+button {
+  cursor: pointer;
+}
+
+.pointer {
+  cursor: pointer
+}
+
 .navbar button {
   background-color: transparent;
   border: 0px;
@@ -261,6 +269,59 @@ Stark: #E7DFDD
   margin-bottom: 2%;
 }
 
+<<<<<<< HEAD
 .edit-bill {
   color: black;
 }
+=======
+.notification-grid {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+.notification-card {
+  width: 300px;
+  padding: 20px;
+  border: 1px solid white;
+  font-size: 1.2rem;
+  margin-bottom: -30px;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+}
+
+.home {
+  color: black;
+  margin-bottom: -300px; /* delete */
+}
+
+.credentials {
+  display: flex;
+  flex-direction: row;
+  width: 10%;
+  margin: 0 auto;
+  justify-content: space-between;
+}
+
+.register-button {
+  text-decoration: none;
+  background-color: black;
+  width: 40%;
+  margin: 0 auto;
+  padding: 10px;
+  margin-top: 10%;
+  border-radius: 8px;
+  font-family: 'Lato';
+  font-size: 1rem;
+}
+
+.link-no-css {
+  text-decoration: none;
+  color: white;
+}
+
+.login {
+  color: black;
+}
+>>>>>>> 9760b651f31814c4a34db2613322b3c8be588b63
