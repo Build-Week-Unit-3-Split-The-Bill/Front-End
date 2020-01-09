@@ -12,6 +12,7 @@ import axiosWithAuth from "./custom-hooks/axiosWithAuth";
 import axios from "axios";
 import useLocalStorage from "./custom-hooks/useLocalStorage";
 import Bill from "./component/bill";
+import EditBill from "./component/editBill";
 
 function App(props) {
   const [loginFormValues, setLoginFormValues] = useState({
@@ -22,6 +23,11 @@ function App(props) {
   const [user, setUser] = useLocalStorage("user", null);
 
   const [allUsers, setAllUsers] = useLocalStorage("all-user", null);
+
+  const [newBillValues, setNewBillValues] = useState({
+    amount: "",
+    title: ""
+  });
 
   const getAllUsers = e => {
     axiosWithAuth()
@@ -80,6 +86,8 @@ function App(props) {
         setError={setError}
         allUsers={allUsers}
         {...props}
+        newBillValues={newBillValues}
+        setNewBillValues={setNewBillValues}
       />
     );
   };
@@ -113,8 +121,24 @@ function App(props) {
       />
       <Route exact path="/register" render={props => <Register {...props} />} />
       <Route
+        exact
         path="/bills/:id"
         render={props => <Bill {...props} user={user} />}
+      />
+      <Route
+        path="/bills/:id/edit"
+        render={props => (
+          <EditBill
+            {...props}
+            user={user}
+            newBillValues={newBillValues}
+            setNewBillValues={setNewBillValues}
+            allUsers={allUsers}
+            setUser={setUser}
+            setError={setError}
+            axiosOnLogin={axiosOnLogin}
+          />
+        )}
       />
       <Footer />
     </div>

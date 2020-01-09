@@ -5,6 +5,7 @@ import axios from "axios";
 function NewBill(props) {
   console.log(`newbills`, props);
   const handleChange = e => {
+    e.preventDefault();
     props.setNewBillValues({
       ...props.newBillValues,
       [e.target.name]: e.target.value

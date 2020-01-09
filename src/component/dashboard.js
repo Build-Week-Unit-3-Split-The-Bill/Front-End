@@ -4,7 +4,6 @@ import Friends from "./friends";
 import Bills from "./bills";
 
 export default function Dashboard(props) {
-  console.log(props, `dashboard`);
   const pages = [
     ({ style }) => (
       <animated.div style={{ ...style, background: "#EC576B", color: "white" }}>
@@ -14,6 +13,8 @@ export default function Dashboard(props) {
           setUser={props.setUser}
           allUser={props.allUsers} // TYPO!!
           setError={props.setError}
+          newBillValues={props.newBillValues}
+          setNewBillValues={props.setNewBillValues}
         />
       </animated.div>
     ),

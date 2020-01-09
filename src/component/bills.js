@@ -14,24 +14,13 @@ export default function Bills(props) {
   const bills = props.user.bills;
   const splits = props.user.splits;
 
-  const [newBillValues, setNewBillValues] = useState({
-    amount: "",
-    title: ""
-  });
-
   return (
     <div className="bills-container">
       <Route
         exact
         path="/dashboard/bills/:id"
         render={props => (
-          <Bill
-            {...props}
-            allUsers={props.allUser}
-            user={props.user}
-            newBillValues={newBillValues}
-            setNewBillValues={setNewBillValues}
-          />
+          <Bill {...props} allUsers={props.allUser} user={props.user} />
         )}
       />
 
@@ -49,8 +38,8 @@ export default function Bills(props) {
       <FormContainer>
         <div>
           <NewBill
-            newBillValues={newBillValues}
-            setNewBillValues={setNewBillValues}
+            newBillValues={props.newBillValues}
+            setNewBillValues={props.setNewBillValues}
             bills={bills}
             user={props.user}
             setUser={props.setUser}
