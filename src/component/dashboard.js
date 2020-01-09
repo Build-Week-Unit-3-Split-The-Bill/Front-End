@@ -33,7 +33,7 @@ export default function Dashboard(props) {
         {...props}
         user={props.user}
         setUser={props.setUser}
-        allUser={props.allUsers}
+        git allUser={props.allUsers}
         onClick={onClick}
         />
       </animated.div>
