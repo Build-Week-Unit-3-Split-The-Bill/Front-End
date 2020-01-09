@@ -2,11 +2,11 @@ import React from "react";
 import axiosWithAuth from "../custom-hooks/axiosWithAuth";
 
 function NewBill(props) {
-  console.log(`newbills`, props);
-  const handleChange = e => {
+  const handleChange = event => {
+    event.preventDefault();
     props.setNewBillValues({
       ...props.newBillValues,
-      [e.target.name]: e.target.value
+      [event.target.name]: event.target.value
     });
   };
 
@@ -29,16 +29,6 @@ function NewBill(props) {
       });
   };
 
-  const handleClick = e => {
-    console.log(`event happened`);
-    return (
-      <div>
-        <input type="email" name="email" placeholder="email" />
-        <input type="number" name="share" />
-      </div>
-    );
-  };
-
   const email = "emma@gmail.com";
 
   return (
@@ -59,8 +49,6 @@ function NewBill(props) {
           value={props.newBillValues.amount}
           onChange={handleChange}
         />
-        <p>Splits:</p>
-        <button onClick={handleClick}>+</button>
 
         <input type="submit" className="new-bill-submit" />
         <a
