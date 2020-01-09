@@ -35,13 +35,13 @@ function SplitCard(props) {
       <h3>{props.curr.title}</h3>
       <h4>${props.curr.amount}</h4>
       <h4>Status: {props.curr.status}</h4>
-      <button onClick={handleClick}>Pay now</button>
+      <button className='bill-card-button' onClick={handleClick}>Pay now</button>
       {toggle === false ? (
         <div></div>
       ) : (
-        <div>
+        <div className='fold-out-split-card'>
           <input type="number" name="amount" onChange={handleChange} />
-          <button onClick={handleSubmit}>Confirm Payment</button>
+          <button className='bill-card-button' onClick={handleSubmit}>Confirm Payment</button>
         </div>
       )}
     </div>

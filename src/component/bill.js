@@ -73,8 +73,9 @@ function Bill(props) {
         <br /> {stringUpdated.slice(0, -34)}
       </p>
       <Link to={`/bills/${thisBill[0].id}/edit`}>
-        <button>Edit</button>
+        <button className='bill-card-button-new'>Edit</button>
       </Link>
+      <div className='spacer'></div>
     </div>
   );
 }

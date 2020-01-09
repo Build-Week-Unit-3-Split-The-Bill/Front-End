@@ -29,9 +29,11 @@ function BillCard(props) {
       <h4>Status: {props.curr.status}</h4>
       <h4>Splits: {props.curr.splits.length}</h4>
       <Link to={`/bills/${props.curr.id}`}>
-        <button>Bill Details</button>
+        <button className="bill-card-button">Bill Details</button>
       </Link>
-      <button onClick={handleDelete}>Delete</button>
+      <button onClick={handleDelete} className="bill-card-button">
+        Delete
+      </button>
       <div></div>
     </div>
   );

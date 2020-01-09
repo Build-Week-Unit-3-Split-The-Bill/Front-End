@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Route } from "react-router-dom";
 import Bill from "./bill";
-
 import styled from "styled-components";
 import NewBill from "./newBill";
 import BillCard from "./BillCard";
@@ -28,7 +27,6 @@ export default function Bills(props) {
         )}
       />
 
-      <h3 className="bills-headings">My Bills</h3>
       <div className="pointer" onClick={props.onClick}>
         <img
           className="slide-arrow"
@@ -38,7 +36,8 @@ export default function Bills(props) {
         />
       </div>
 
-      <h3 className="bills-headings">{props.user.firstName} Bills</h3>
+      <h3 className="bills-headings">{props.user.firstName} Bills ({bills.length})</h3>
+      <p className='sub-headings'>(Bills created by you)</p>
       <FormContainer>
         <div>
           <NewBill
@@ -65,6 +64,7 @@ export default function Bills(props) {
         })}
       </div>
       <h3 className="bills-headings">Bills to Pay ({splits.length})</h3>
+      <p className='sub-headings'>(Bills you are a part of)</p>
       <div className="all-bills">
         {splits.map((curr, index) => {
           return (
