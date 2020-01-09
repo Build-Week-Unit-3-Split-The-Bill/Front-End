@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axiosWithAuth from "../custom-hooks/axiosWithAuth";
+import TableEntry from "./TableEntry";
 
 export default function EditBill(props) {
   const getThisBill = e =>
@@ -30,7 +31,7 @@ export default function EditBill(props) {
   };
 
   const handleSubmit = e => {
-    // e.preventDefault();
+    e.preventDefault();
     const userIds = addedPeopleDetails.map(user => user[0].id);
     axiosWithAuth()
       .post(
@@ -41,16 +42,12 @@ export default function EditBill(props) {
         let splitsArray = response.data.splits;
         splitsArray = splitsArray.map(user => user.id);
         setDisplayAddedEmails(splitsArray);
-        console.log(response);
-        console.log(thisBill[0]);
         props.axiosOnLogin();
       })
       .catch(error => {
         props.setError(error);
-        console.log(error);
       });
   };
-
   let getSplitDetails;
 
   return (
@@ -73,22 +70,19 @@ export default function EditBill(props) {
                 <th>Left to Pay</th>
                 <th>Paid</th>
                 <th>Status</th>
+                <th>Aprove Payment</th>
               </tr>
               {thisBill[0].splits.map((curr, index) => {
                 const getSplitDetails = props.allUsers.filter(
                   user => curr.userId === user.id
                 );
-                console.log(curr, getSplitDetails, props.allUsers);
                 return (
-                  <tr key={index}>
-                    <th>
-                      {getSplitDetails[0].firstName}{" "}
-                      {getSplitDetails[0].lastName}
-                    </th>
-                    <th>{curr.amount}</th>
-                    <th>{curr.amountPaid}</th>
-                    <th>{curr.status}</th>
-                  </tr>
+                  <TableEntry
+                    curr={curr}
+                    index={index}
+                    getSplitDetails={getSplitDetails}
+                    axiosOnLogin={props.axiosOnLogin}
+                  />
                 );
               })}
               {displayAddedEmails.map((curr, index) => {
@@ -132,140 +126,4 @@ export default function EditBill(props) {
       )}
     </div>
   );
-
-  //   const getBillDetails = props.user.bills.filter(
-  //     bill => bill.id === props.match.params.id
-  //   );
-
-  //   const [billDetails, setBillDetails] = useState(getBillDetails);
-  //   console.log(`initial`, billDetails);
-
-  //   const [newEmail, setNewEmail] = useState("");
-  //   const [splittersArr, setSpliterArr] = useState([]);
-  //   const [billSplits, setBillSplits] = useState([]);
-
-  //   const handleChange = e => {
-  //     setNewEmail(e.target.value);
-  //   };
-
-  //   const handleAdd = e => {
-  //     const user = props.allUsers.filter(user => user.email === newEmail);
-  //     setSpliterArr([...splittersArr, user]);
-  //     setNewEmail("");
-  //   };
-
-  //   const handleSubmit = e => {
-  //     e.preventDefault();
-  //     const splittersIds = splittersArr.map(curr => curr[0].id);
-  //     axiosWithAuth()
-  //       .post(
-  //         `https://split-the-bill-api.herokuapp.com/api/bills/${billDetails[0].id}/split`,
-  //         { splitters: splittersIds }
-  //       )
-  //       .then(response => {
-  //         setBillSplits(response.data.splits);
-  //         setBillDetails([{ ...billDetails, splits: response.data.splits }]);
-  //         let newArr = props.user.splits.concat(response.data.splits);
-  //         props.setUser({
-  //           ...props.user,
-  //           splits: [newArr]
-  //         });
-  //         setSpliterArr([]);
-  //         setNewEmail("");
-  //         console.log(`working axios`, billDetails);
-  //       })
-  //       .catch(error => {
-  //         props.setError(error);
-  //         console.log(`sad face`, billDetails);
-  //       });
-  //   };
-
-  //   return (
-  //     <div className="edit-bill">
-  //       <p>Bill Overview</p>
-  //       {!billDetails ? (
-  //         <p>Loading...</p>
-  //       ) : (
-  //         <div>
-  //           <span>Bill Name:</span>
-  //           <span>{billDetails[0].title}</span>
-  //           <span>Total Bill in USD:</span>
-  //           <span>{billDetails[0].amount}</span>
-
-  //           <p>Splits:</p>
-  //           <table>
-  //             <tbody>
-  //               <tr>
-  //                 <th>Details from:</th>
-  //                 <th>Name</th>
-  //                 <th>Left to Pay</th>
-  //                 <th>Paid</th>
-  //               </tr>
-  //               {!billDetails[0].splits && !billSplits ? (
-  //                 <tr>
-  //                   <th>No splits asigned yet</th>
-  //                 </tr>
-  //               ) : !billSplits ? (
-  //                 billDetails[0].splits.map((curr, index) => {
-  //                   const splitsDetails = props.allUsers.filter(
-  //                     user => curr.userId === user.id
-  //                   );
-  //                   return (
-  //                     <tr key={index}>
-  //                       <th>no billSplits</th>
-  //                       <th>
-  //                         {splitsDetails.firstName} {splitsDetails.lastName}
-  //                       </th>
-  //                       <th>{curr.amount}</th>
-  //                       <th>{curr.amountPaid}</th>
-  //                     </tr>
-  //                   );
-  //                 })
-  //               ) : !billDetails[0].splits ? (
-  //                 billSplits.map((curr, index) => {
-  //                   const splitsDetails = props.allUsers.filter(
-  //                     user => curr.userId === user.id
-  //                   );
-  //                   return (
-  //                     <tr key={index}>
-  //                       <th>no billDetails</th>
-  //                       <th>
-  //                         {splitsDetails[0].firstName} {splitsDetails[0].lastName}
-  //                       </th>
-  //                       <th>{curr.amount}</th>
-  //                       <th>{curr.amountPaid}</th>
-  //                     </tr>
-  //                   );
-  //                 })
-  //               ) : (
-  //                 <tr>
-  //                   <th>No splits asigned yet</th>
-  //                 </tr>
-  //               )}
-  //             </tbody>
-  //           </table>
-  //           <span>email</span>
-  //           <input
-  //             type="email"
-  //             name="email"
-  //             onChange={handleChange}
-  //             value={newEmail}
-  //           />
-  //           <button onClick={handleAdd}>Add</button>
-  //           {splittersArr.map((curr, index) => {
-  //             return (
-  //               <div key={index}>
-  //                 <span>
-  //                   {curr[0].firstName} {curr[0].lastName}
-  //                 </span>
-  //                 <span>{curr[0].email}</span>
-  //               </div>
-  //             );
-  //           })}
-  //           <br />
-  //           <button onClick={handleSubmit}>Submit</button>
-  //         </div>
-  //       )}
-  //     </div>
-  //   );
 }

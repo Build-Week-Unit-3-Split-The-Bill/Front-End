@@ -8,7 +8,10 @@ function Bill(props) {
     return curr.id === id;
   });
 
-  console.log(`Bill component`, props);
+  const newCreated = Date(thisBill[0].createdAt);
+  const stringCreated = newCreated.toString();
+  const newUpdated = Date(thisBill[0].createdAt);
+  const stringUpdated = newUpdated.toString();
 
   return (
     <div className="bill">
@@ -20,20 +23,54 @@ function Bill(props) {
       <p>
         <span className="underline">Per person:</span>
         <br />
-        <br /> {thisBill[0].amount / 1 + thisBill[0].splits.length}
+        <br /> {thisBill[0].amount / thisBill[0].splits.length}
       </p>
       <p>
         <span className="underline">Status:</span> <br />
         <br />
         {thisBill[0].status}
       </p>
+      <div>
+        <h4>Splits:</h4>
+        <table>
+          <tbody>
+            <tr>
+              <th>Name</th>
+              <th>Left to Pay</th>
+              <th>Paid</th>
+              <th>Status</th>
+            </tr>
+            {!thisBill[0].splits.length ? (
+              <div>No people assigned</div>
+            ) : (
+              thisBill[0].splits.map((curr, index) => {
+                const getSplitDetails = props.allUsers.filter(
+                  user => user.id === curr.userId
+                );
+                return (
+                  <tr key={index}>
+                    <th>
+                      {getSplitDetails[0].firstName}{" "}
+                      {getSplitDetails[0].lastName}
+                    </th>
+                    <th>{curr.amount}</th>
+                    <th>{curr.amountPaid}</th>
+                    <th>{curr.status}</th>
+                  </tr>
+                );
+              })
+            )}
+          </tbody>
+        </table>
+      </div>
+
       <p>
         <span className="underline">Created:</span> <br />
-        <br /> {thisBill[0].createdAt}
+        <br /> {stringCreated.slice(0, -34)}
       </p>
       <p>
         <span className="underline">Updated:</span> <br />
-        <br /> {thisBill[0].updatedAt}
+        <br /> {stringUpdated.slice(0, -34)}
       </p>
       <Link to={`/bills/${thisBill[0].id}/edit`}>
         <button>Edit</button>

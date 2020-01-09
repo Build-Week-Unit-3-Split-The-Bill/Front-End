@@ -23,6 +23,7 @@ export default function Dashboard(props) {
           allUser={props.allUsers} // TYPO!!
           setError={props.setError}
           onClick={onClick}
+          axiosOnLogin={props.axiosOnLogin}
         />
       </animated.div>
     ),

@@ -24,7 +24,7 @@ export default function Bills(props) {
         exact
         path="/dashboard/bills/:id"
         render={props => (
-          <Bill {...props} allUsers={props.allUser} user={props.curr} />
+          <Bill {...props} allUsers={props.allUsers} user={props.curr} />
         )}
       />
 
@@ -54,7 +54,12 @@ export default function Bills(props) {
         {bills.map((curr, index) => {
           return (
             <div key={index}>
-              <BillCard index={index} curr={curr} {...props} />
+              <BillCard
+                index={index}
+                curr={curr}
+                {...props}
+                axiosOnLogin={props.axiosOnLogin}
+              />
             </div>
           );
         })}

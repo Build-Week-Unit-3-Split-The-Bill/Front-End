@@ -125,7 +125,7 @@ function App(props) {
       <Route
         exact
         path="/bills/:id"
-        render={props => <Bill {...props} user={user} />}
+        render={props => <Bill {...props} user={user} allUsers={allUsers} />}
       />
       <Route
         path="/bills/:id/edit"
