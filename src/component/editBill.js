@@ -1,8 +1,28 @@
 import React, { useState, useEffect } from "react";
 import axiosWithAuth from "../custom-hooks/axiosWithAuth";
 import TableEntry from "./TableEntry";
+import { makeStyles } from "@material-ui/core/styles";
+import Table from "@material-ui/core/Table";
+import TableBody from "@material-ui/core/TableBody";
+import TableCell from "@material-ui/core/TableCell";
+import TableContainer from "@material-ui/core/TableContainer";
+import TableHead from "@material-ui/core/TableHead";
+import TableRow from "@material-ui/core/TableRow";
+
+const useStyles = makeStyles({
+  table: {
+    width: "85%",
+    margin: "0px auto"
+  },
+  rows: {
+    color: "black",
+    margin: "3px 0px"
+  }
+});
 
 export default function EditBill(props) {
+  const classes = useStyles();
+
   const getThisBill = e =>
     props.user.bills.filter(bill => bill.id === props.match.params.id);
   const thisBill = getThisBill();
@@ -57,51 +77,46 @@ export default function EditBill(props) {
         <p>Loading...</p>
       ) : (
         <div>
-          <span>Bill Name:</span>
+          <span>Bill Name:{"   "}</span>
           <span>{thisBill[0].title}</span>
-          <span>Total Bill in USD:</span>
+          <br />
+          <br />
+          <span>Total Bill in USD:{"   "}</span>
           <span>{thisBill[0].amount}</span>
 
           <p>Splits:</p>
-          <table>
-            <tbody>
-              <tr>
-                <th>Name</th>
-                <th>Left to Pay</th>
-                <th>Paid</th>
-                <th>Status</th>
-                <th>Aprove Payment</th>
-              </tr>
-              {thisBill[0].splits.map((curr, index) => {
-                const getSplitDetails = props.allUsers.filter(
-                  user => curr.userId === user.id
-                );
-                return (
-                  <TableEntry
-                    curr={curr}
-                    index={index}
-                    getSplitDetails={getSplitDetails}
-                    axiosOnLogin={props.axiosOnLogin}
-                  />
-                );
-              })}
-              {displayAddedEmails.map((curr, index) => {
-                getSplitDetails = props.allUsers.filter(
-                  user => curr.userId === user.id
-                );
-                return (
-                  <tr key={index}>
-                    <th>
-                      {getSplitDetails.firstName} {getSplitDetails.lastName}
-                    </th>
-                    <th>{curr.amount}</th>
-                    <th>{curr.amountPaid}</th>
-                    <th>{curr.status}</th>
-                  </tr>
-                );
-              })}
-            </tbody>
-          </table>
+          <TableContainer className={classes.table}>
+            <Table
+              className={classes.table}
+              size="small"
+              aria-label="a dense table"
+            >
+              <TableHead>
+                <TableRow>
+                  <TableCell>First Name</TableCell>
+                  <TableCell align="right">Last Name</TableCell>
+                  <TableCell align="right">Amount Left to Pay</TableCell>
+                  <TableCell align="right">Amount Paid</TableCell>
+                  <TableCell align="right">Status</TableCell>
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                {thisBill[0].splits.map((curr, index) => {
+                  const getSplitDetails = props.allUsers.filter(
+                    user => curr.userId === user.id
+                  );
+                  return (
+                    <TableEntry
+                      curr={curr}
+                      index={index}
+                      getSplitDetails={getSplitDetails}
+                      axiosOnLogin={props.axiosOnLogin}
+                    />
+                  );
+                })}
+              </TableBody>
+            </Table>
+          </TableContainer>
           <span>email</span>
           <input
             type="email"
@@ -110,17 +125,32 @@ export default function EditBill(props) {
             value={newEmail}
           />
           <button onClick={handleAdd}>Add</button>
-          {addedPeopleDetails.map((curr, index) => {
-            return (
-              <div key={index}>
-                <span>
-                  {curr[0].firstName} {curr[0].lastName}
-                </span>
-                <span>{curr[0].email}</span>
-              </div>
-            );
-          })}
-          <br />
+          <TableContainer>
+            <Table
+              className={classes.table}
+              size="small"
+              aria-label="a dense table"
+            >
+              <TableHead>
+                <TableRow>
+                  <TableCell>First Name</TableCell>
+                  <TableCell align="right">Last Name</TableCell>
+                  <TableCell align="right">Email</TableCell>
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                {addedPeopleDetails.map((curr, index) => (
+                  <TableRow key={index}>
+                    <TableCell component="th" scope="row">
+                      {curr[0].firstName}
+                    </TableCell>
+                    <TableCell align="right">{curr[0].lastName}</TableCell>
+                    <TableCell align="right">{curr[0].email}</TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </TableContainer>
 
           <button onClick={handleSubmit}>Submit</button>
           <br />

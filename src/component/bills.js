@@ -10,6 +10,7 @@ const FormContainer = styled.div``;
 
 export default function Bills(props) {
   const bills = props.user.bills;
+  console.log(props);
 
   const [splits, setSplits] = useState(props.user.splits);
 
@@ -18,13 +19,17 @@ export default function Bills(props) {
     title: ""
   });
 
+  const handleUpdate = e => {
+    props.axiosOnLogin();
+  };
+
   return (
     <div className="bills-container">
       <Route
         exact
         path="/dashboard/bills/:id"
         render={props => (
-          <Bill {...props} allUsers={props.allUsers} user={props.curr} />
+          <Bill {...props} allUsers={props.allUsers} user={props.user} />
         )}
       />
 
@@ -36,6 +41,9 @@ export default function Bills(props) {
           alt="animation logo"
         />
       </div>
+      <button onClick={handleUpdate} className="update-button">
+        Check for Updates
+      </button>
 
       <h3 className="bills-headings">
         {props.user.firstName} Bills ({bills.length})

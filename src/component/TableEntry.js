@@ -1,5 +1,7 @@
 import React from "react";
 import axiosWithAuth from "../custom-hooks/axiosWithAuth";
+import TableCell from "@material-ui/core/TableCell";
+import TableRow from "@material-ui/core/TableRow";
 
 export default function TableEntry(props) {
   const handleApprove = e => {
@@ -17,19 +19,18 @@ export default function TableEntry(props) {
       });
   };
 
-  console.log(props);
-
   return (
-    <tr key={props.index}>
-      <th>
-        {props.getSplitDetails[0].firstName} {props.getSplitDetails[0].lastName}
-      </th>
-      <th>{props.curr.amount}</th>
-      <th>{props.curr.amountPaid}</th>
-      <th>{props.curr.status}</th>
-      <th>
+    <TableRow key={props.index}>
+      <TableCell component="th" scope="row">
+        {props.getSplitDetails[0].firstName}
+      </TableCell>
+      <TableCell align="right">{props.getSplitDetails[0].lastName}</TableCell>
+      <TableCell align="right">{props.curr.amount}</TableCell>
+      <TableCell align="right">{props.curr.amountPaid}</TableCell>
+      <TableCell align="right">{props.curr.status}</TableCell>
+      <TableCell align="right">
         <button onClick={handleApprove}>Approve</button>
-      </th>
-    </tr>
+      </TableCell>
+    </TableRow>
   );
 }
