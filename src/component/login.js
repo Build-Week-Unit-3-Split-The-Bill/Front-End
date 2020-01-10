@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 function Login(props) {
   return (
-    <div className='login'>
+    <div className="login">
       <h1>Login</h1>
       <form className="forms" onSubmit={props.handleSubmit}>
         <input
@@ -21,8 +21,8 @@ function Login(props) {
           placeholder="Password"
         />
         <input type="submit" id="submit" />
-        <Link className='link-no-css' to="/register">
-          <p className='register-button'>Sign Up</p>
+        <Link className="link-no-css" to="/register">
+          <p className="register-button">Sign Up</p>
         </Link>
       </form>
     </div>

@@ -5,6 +5,7 @@ import Bills from "./bills";
 import Notification from "./notification";
 
 export default function Dashboard(props) {
+  console.log(props, `dashboard`);
   const pages = [
     ({ style }) => (
       <animated.div

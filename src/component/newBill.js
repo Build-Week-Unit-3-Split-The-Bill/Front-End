@@ -12,18 +12,20 @@ function NewBill(props) {
 
   const handleSubmit = e => {
     e.preventDefault();
-    axiosWithAuth("post", "/bills", {
-      amount: props.newBillValues.amount,
-      title: props.newBillValues.title
-    })
+    axiosWithAuth()
+      .post("https://split-the-bill-api.herokuapp.com/api/bills", {
+        amount: props.newBillValues.amount,
+        title: props.newBillValues.title
+      })
       .then(response => {
+        console.log(response);
         props.setUser({
           ...props.user,
           bills: [...props.user.bills, { ...response.data.bill, splits: [] }]
         });
       })
       .catch(err => {
-        props.setError(err);
+        console.log(err);
       });
   };
 

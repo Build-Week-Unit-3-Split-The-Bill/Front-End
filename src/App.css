@@ -260,7 +260,7 @@ button {
   width: 100%;
   margin: 0 auto;
   font-size: 1.5rem;
-  background-color: #EC576B;
+  background-color: #ec576b;
   margin-top: -50px;
   position: absolute;
 }
@@ -332,7 +332,7 @@ button {
 }
 
 .bill-card-button {
-  font-family: 'Lato';
+  font-family: "Lato";
   margin-left: 2%;
   background-color: transparent;
   color: white;
@@ -345,7 +345,7 @@ button {
 }
 
 .bill-card-button-new {
-  font-family: 'Lato';
+  font-family: "Lato";
   background-color: transparent;
   color: white;
   width: 10%;
@@ -367,4 +367,17 @@ button {
 
 .spacer {
   height: 100px;
+}
+
+.invite-friend {
+  text-decoration: none;
+  color: white;
+  width: 5%;
+  background-color: black;
+  padding: 5px 10px;
+  border-radius: 8px;
+  font-family: "Lato";
+  font-size: 0.9rem;
+  position: relative;
+  top: 20px;
 }

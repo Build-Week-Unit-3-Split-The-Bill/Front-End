@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import axiosRequest from "../custom-hooks/axiosRequest";
+import axios from "axios";
 
 function Register(props) {
   const [registerForm, setRegisterForm] = useState({
@@ -18,12 +18,13 @@ function Register(props) {
 
   const handleSubmit = e => {
     e.preventDefault();
-    axiosRequest("post", "/auth/register", {
-      firstName: registerForm.first_name,
-      lastName: registerForm.last_name,
-      email: registerForm.email,
-      password: registerForm.password
-    })
+    axios
+      .post("https://split-the-bill-api.herokuapp.com/api/auth/register", {
+        firstName: registerForm.first_name,
+        lastName: registerForm.last_name,
+        email: registerForm.email,
+        password: registerForm.password
+      })
       .then(response => {
         alert(`Thank you for registering. Please now login`);
         props.history.push("/login");
@@ -34,7 +35,7 @@ function Register(props) {
         } else if (error.message === "Request failed with status code 422") {
           alert("Your password must be at least 6 characters.");
         } else {
-          props.setError(error.message);
+          console.log(error.message);
         }
       });
   };
