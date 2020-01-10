@@ -10,7 +10,8 @@ import TableRow from "@material-ui/core/TableRow";
 
 const useStyles = makeStyles({
   table: {
-    minWidth: 650
+    width: 650,
+    margin: "0px auto"
   },
   rows: {
     color: "white",
@@ -32,6 +33,8 @@ function Bill(props) {
 
   const classes = useStyles();
 
+  const perPerson = thisBill[0].amount / thisBill[0].splits.length;
+
   return (
     <div className="bill">
       <h1>{thisBill[0].title}</h1>
@@ -43,9 +46,7 @@ function Bill(props) {
         <span className="underline">Per person:</span>
         <br />
         <br />{" "}
-        {!thisBill[0].splits.length
-          ? thisBill[0].amount
-          : thisBill[0].amount / thisBill[0].splits.length}
+        {!thisBill[0].splits.length ? thisBill[0].amount : perPerson.toFixed(2)}
       </p>
       <p>
         <span className="underline">Status:</span> <br />
@@ -54,7 +55,7 @@ function Bill(props) {
       </p>
       <div>
         <h4>Splits:</h4>
-        <TableContainer>
+        <TableContainer className={classes.table}>
           <Table
             className={classes.table}
             size="small"
