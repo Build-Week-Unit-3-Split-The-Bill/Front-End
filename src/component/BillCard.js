@@ -3,8 +3,6 @@ import axiosWithAuth from "../custom-hooks/axiosWithAuth";
 import { Link } from "react-router-dom";
 
 function BillCard(props) {
-  const splits = props.curr.splits;
-
   const handleDelete = e => {
     axiosWithAuth()
       .delete(
