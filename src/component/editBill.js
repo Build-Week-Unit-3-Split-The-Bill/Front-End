@@ -121,7 +121,15 @@ export default function EditBill(props) {
             );
           })}
           <br />
+
           <button onClick={handleSubmit}>Submit</button>
+          <br />
+          <a
+            className="invite-friend"
+            href="mailto:?subject=Split%20the%20Bill%20Invitation%20-%20Your%20personal%20invitation!%20&amp;body=Hey%2C%0A%0AYou%20have%20been%20invited%20by%20your%20friend%20a%20to%20Split%20the%20Bill.%20%0A%0AThis%20is%20the%20new%20and%20easy%20way%20to%20split%20the%20bill%20without%20the%20fuse%20at%20the%20table!%0A%0ARegister%20now%20%3D%3E%20https%3A%2F%2Ffront-end.mattlocklin.now.sh%2Fregister%20%0A%0ASee%20you%20soon!%0A%0AFrom%20the%20Team%20at%20Split%20the%20Bill"
+          >
+            Invite a Friend
+          </a>
         </div>
       )}
     </div>

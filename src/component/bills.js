@@ -10,7 +10,8 @@ const FormContainer = styled.div``;
 
 export default function Bills(props) {
   const bills = props.user.bills;
-  const splits = props.user.splits;
+
+  const [splits, setSplits] = useState(props.user.splits);
 
   const [newBillValues, setNewBillValues] = useState({
     amount: "",
@@ -36,8 +37,10 @@ export default function Bills(props) {
         />
       </div>
 
-      <h3 className="bills-headings">{props.user.firstName} Bills ({bills.length})</h3>
-      <p className='sub-headings'>(Bills created by you)</p>
+      <h3 className="bills-headings">
+        {props.user.firstName} Bills ({bills.length})
+      </h3>
+      <p className="sub-headings">(Bills created by you)</p>
       <FormContainer>
         <div>
           <NewBill
@@ -64,7 +67,7 @@ export default function Bills(props) {
         })}
       </div>
       <h3 className="bills-headings">Bills to Pay ({splits.length})</h3>
-      <p className='sub-headings'>(Bills you are a part of)</p>
+      <p className="sub-headings">(Bills you are a part of)</p>
       <div className="all-bills">
         {splits.map((curr, index) => {
           return (
@@ -73,6 +76,9 @@ export default function Bills(props) {
                 {...props}
                 curr={curr}
                 axiosOnLogin={props.axiosOnLogin}
+                splits={splits}
+                setSplits={setSplits}
+                user={props.user}
               />
             </div>
           );

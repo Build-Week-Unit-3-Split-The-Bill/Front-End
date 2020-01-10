@@ -14,10 +14,7 @@ import useLocalStorage from "./custom-hooks/useLocalStorage";
 import Bill from "./component/bill";
 import EditBill from "./component/editBill";
 
-
-
 function App(props) {
-  
   const [loginFormValues, setLoginFormValues] = useState({
     email: "",
     password: ""
@@ -96,7 +93,7 @@ function App(props) {
       />
     );
   };
-  
+
   return (
     <div className="App">
       <Route

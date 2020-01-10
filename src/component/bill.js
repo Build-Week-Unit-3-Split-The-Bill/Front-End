@@ -23,7 +23,10 @@ function Bill(props) {
       <p>
         <span className="underline">Per person:</span>
         <br />
-        <br /> {thisBill[0].amount / thisBill[0].splits.length}
+        <br />{" "}
+        {!thisBill[0].splits.length
+          ? thisBill[0].amount
+          : thisBill[0].amount / thisBill[0].splits.length}
       </p>
       <p>
         <span className="underline">Status:</span> <br />
@@ -73,9 +76,9 @@ function Bill(props) {
         <br /> {stringUpdated.slice(0, -34)}
       </p>
       <Link to={`/bills/${thisBill[0].id}/edit`}>
-        <button className='bill-card-button-new'>Edit</button>
+        <button className="bill-card-button-new">Edit</button>
       </Link>
-      <div className='spacer'></div>
+      <div className="spacer"></div>
     </div>
   );
 }
