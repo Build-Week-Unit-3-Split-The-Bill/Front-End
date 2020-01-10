@@ -18,6 +18,10 @@ export default function Bills(props) {
     title: ""
   });
 
+  const handleUpdate = e => {
+    props.axiosOnLogin();
+  };
+
   return (
     <div className="bills-container">
       <Route
@@ -36,6 +40,9 @@ export default function Bills(props) {
           alt="animation logo"
         />
       </div>
+      <button onClick={handleUpdate} className="update-button">
+        Check for Updates
+      </button>
 
       <h3 className="bills-headings">
         {props.user.firstName} Bills ({bills.length})

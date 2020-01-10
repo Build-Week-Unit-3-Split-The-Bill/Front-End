@@ -381,3 +381,18 @@ button {
   position: relative;
   top: 20px;
 }
+
+.update-button {
+  width: 20%;
+  margin: 0 auto;
+  background-color: transparent;
+  font-family: "Lato";
+  color: white;
+  border: 1px solid white;
+  padding: 4px 8px;
+  border-radius: 5px;
+  font-size: 1rem;
+  position: absolute;
+  top: -35px;
+  right: 5px;
+}

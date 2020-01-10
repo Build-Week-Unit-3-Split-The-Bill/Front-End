@@ -77,9 +77,11 @@ export default function EditBill(props) {
         <p>Loading...</p>
       ) : (
         <div>
-          <span>Bill Name:</span>
+          <span>Bill Name:{"   "}</span>
           <span>{thisBill[0].title}</span>
-          <span>Total Bill in USD:</span>
+          <br />
+          <br />
+          <span>Total Bill in USD:{"   "}</span>
           <span>{thisBill[0].amount}</span>
 
           <p>Splits:</p>
