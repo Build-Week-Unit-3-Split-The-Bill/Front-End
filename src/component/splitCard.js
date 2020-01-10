@@ -22,17 +22,14 @@ function SplitCard(props) {
 
   const handleSubmit = e => {
     e.preventDefault();
-    axiosWithAuth()
-      .patch(
-        `https://split-the-bill-api.herokuapp.com/api/splits/${props.curr.id}/settleUp?au&=`,
-        { amount: payment }
-      )
+    axiosWithAuth("patch", `/splits/${props.curr.id}/settleUp?au&=`, {
+      amount: payment
+    })
       .then(response => {
-        console.log(response);
         props.axiosOnLogin();
       })
       .catch(error => {
-        console.log(error);
+        props.SetError(error);
       });
   };
 

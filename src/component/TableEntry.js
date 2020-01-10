@@ -4,20 +4,15 @@ import axiosWithAuth from "../custom-hooks/axiosWithAuth";
 export default function TableEntry(props) {
   const handleApprove = e => {
     e.preventDefault();
-    axiosWithAuth()
-      .patch(
-        `https://split-the-bill-api.herokuapp.com/api/splits/${props.curr.id}/approve`
-      )
+    axiosWithAuth("patch", `/splits/${props.curr.id}/approve`)
       .then(response => {
         alert(`You have approved this payment`);
         props.axiosOnLogin();
       })
       .catch(error => {
-        console.log(error);
+        props.SetError(error);
       });
   };
-
-  console.log(props);
 
   return (
     <tr key={props.index}>

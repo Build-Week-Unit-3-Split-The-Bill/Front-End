@@ -6,19 +6,15 @@ function BillCard(props) {
   const splits = props.curr.splits;
 
   const handleDelete = e => {
-    axiosWithAuth()
-      .delete(
-        `https://split-the-bill-api.herokuapp.com/api/bills/${props.curr.id}/delete`
-      )
+    axiosWithAuth("delete", `/bills/${props.curr.id}/delete`)
       .then(response => {
-        console.log(response);
         let filteredArr = props.user.bills.filter(bill => {
           return bill.id != props.curr.id;
         });
         props.setUser({ ...props.user, bills: filteredArr });
       })
       .catch(error => {
-        console.log(error.message);
+        props.setError(error.message);
       });
   };
 

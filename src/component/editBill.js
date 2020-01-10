@@ -33,11 +33,9 @@ export default function EditBill(props) {
   const handleSubmit = e => {
     e.preventDefault();
     const userIds = addedPeopleDetails.map(user => user[0].id);
-    axiosWithAuth()
-      .post(
-        `https://split-the-bill-api.herokuapp.com/api/bills/${thisBill[0].id}/split`,
-        { splitters: userIds }
-      )
+    axiosWithAuth("post", `/bills/${thisBill[0].id}/split`, {
+      splitters: userIds
+    })
       .then(response => {
         let splitsArray = response.data.splits;
         splitsArray = splitsArray.map(user => user.id);

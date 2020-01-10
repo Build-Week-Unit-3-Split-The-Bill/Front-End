@@ -9,15 +9,12 @@ import Dashboard from "./component/dashboard";
 import Register from "./component/register";
 import withAuthChecker from "./custom-hooks/withAuthChecker";
 import axiosWithAuth from "./custom-hooks/axiosWithAuth";
-import axios from "axios";
+import axiosRequest from "./custom-hooks/axiosRequest";
 import useLocalStorage from "./custom-hooks/useLocalStorage";
 import Bill from "./component/bill";
 import EditBill from "./component/editBill";
 
-
-
 function App(props) {
-  
   const [loginFormValues, setLoginFormValues] = useState({
     email: "",
     password: ""
@@ -33,8 +30,7 @@ function App(props) {
   });
 
   const getAllUsers = e => {
-    axiosWithAuth()
-      .get("https://split-the-bill-api.herokuapp.com/api/users")
+    axiosWithAuth("get", "/users")
       .then(response => {
         setAllUsers(response.data.users);
       })
@@ -44,12 +40,10 @@ function App(props) {
   };
 
   const axiosOnLogin = e => {
-    axiosWithAuth()
-      .get("https://split-the-bill-api.herokuapp.com/api/users/profile")
+    axiosWithAuth("get", "/users/profile")
       .then(response => {
         setUser(response.data.user);
         window.location.reload();
-        console.log(user);
       })
       .catch(err => {
         setError(err.message);
@@ -58,11 +52,10 @@ function App(props) {
 
   const handleSubmit = e => {
     e.preventDefault();
-    axios
-      .post("https://split-the-bill-api.herokuapp.com/api/auth/login", {
-        email: loginFormValues.email,
-        password: loginFormValues.password
-      })
+    axiosRequest("post", "/auth/login", {
+      email: loginFormValues.email,
+      password: loginFormValues.password
+    })
       .then(response => {
         localStorage.setItem("token", response.data.token);
         props.history.push("/dashboard");
@@ -96,7 +89,7 @@ function App(props) {
       />
     );
   };
-  
+
   return (
     <div className="App">
       <Route
