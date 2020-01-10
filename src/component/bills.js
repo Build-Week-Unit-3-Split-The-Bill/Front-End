@@ -10,6 +10,7 @@ const FormContainer = styled.div``;
 
 export default function Bills(props) {
   const bills = props.user.bills;
+  console.log(props);
 
   const [splits, setSplits] = useState(props.user.splits);
 
@@ -28,7 +29,7 @@ export default function Bills(props) {
         exact
         path="/dashboard/bills/:id"
         render={props => (
-          <Bill {...props} allUsers={props.allUsers} user={props.curr} />
+          <Bill {...props} allUsers={props.allUsers} user={props.user} />
         )}
       />
 

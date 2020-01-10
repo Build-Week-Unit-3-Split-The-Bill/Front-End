@@ -10,17 +10,20 @@ import Register from "./component/register";
 import withAuthChecker from "./custom-hooks/withAuthChecker";
 import axiosWithAuth from "./custom-hooks/axiosWithAuth";
 import axios from "axios";
-import useLocalStorage from "./custom-hooks/useLocalStorage";
 import Bill from "./component/bill";
 import EditBill from "./component/editBill";
-import Table from './component/Table';
+import useLocalStorage from "./custom-hooks/useLocalStorage";
 
 function App(props) {
+  // Central State
+
   const [loginFormValues, setLoginFormValues] = useState({
     email: "",
     password: ""
   });
+
   const [error, setError] = useState(null);
+
   const [user, setUser] = useLocalStorage("user", null);
 
   const [allUsers, setAllUsers] = useLocalStorage("all-user", null);
@@ -30,6 +33,8 @@ function App(props) {
     title: ""
   });
 
+  // Calls
+
   const getAllUsers = e => {
     axiosWithAuth()
       .get("https://split-the-bill-api.herokuapp.com/api/users")
@@ -37,7 +42,7 @@ function App(props) {
         setAllUsers(response.data.users);
       })
       .catch(error => {
-        props.setError(error.message);
+        setError(error.message);
       });
   };
 
@@ -47,7 +52,6 @@ function App(props) {
       .then(response => {
         setUser(response.data.user);
         window.location.reload();
-        console.log(user);
       })
       .catch(err => {
         setError(err.message);
@@ -97,24 +101,17 @@ function App(props) {
 
   return (
     <div className="App">
-      <Route
-        path="/"
-        render={props => <Navbar {...props} setUser={setUser} />}
-      />
-      
+      <Route path="/" render={props => <Navbar {...props} />} />
       <Route exact path="/" component={Home} />
       <Route
         exact
         path="/login"
         render={props => (
           <Login
-            {...props}
             loginFormValues={loginFormValues}
-            setLoginFormValues={setLoginFormValues}
-            user={user}
-            setUser={setUser}
             handleChange={handleChange}
             handleSubmit={handleSubmit}
+            axiosOnLogin={axiosOnLogin}
           />
         )}
       />
@@ -127,20 +124,16 @@ function App(props) {
       <Route
         exact
         path="/bills/:id"
-        render={props => <Bill {...props} user={user} allUsers={allUsers} />}
+        render={props => <Bill {...props} allUsers={allUsers} user={user} />}
       />
       <Route
         path="/bills/:id/edit"
         render={props => (
           <EditBill
             {...props}
-            user={user}
-            newBillValues={newBillValues}
-            setNewBillValues={setNewBillValues}
-            allUsers={allUsers}
-            setUser={setUser}
-            setError={setError}
             axiosOnLogin={axiosOnLogin}
+            allUsers={allUsers}
+            user={user}
           />
         )}
       />
