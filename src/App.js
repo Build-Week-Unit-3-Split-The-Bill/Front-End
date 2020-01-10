@@ -13,6 +13,7 @@ import axios from "axios";
 import useLocalStorage from "./custom-hooks/useLocalStorage";
 import Bill from "./component/bill";
 import EditBill from "./component/editBill";
+import Table from './component/Table';
 
 function App(props) {
   const [loginFormValues, setLoginFormValues] = useState({
@@ -100,6 +101,7 @@ function App(props) {
         path="/"
         render={props => <Navbar {...props} setUser={setUser} />}
       />
+      
       <Route exact path="/" component={Home} />
       <Route
         exact
