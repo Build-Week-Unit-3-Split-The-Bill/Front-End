@@ -4,7 +4,7 @@ import NotificationCard from './notificationCard';
 function Notifications(props) {
 
   return (
-    <div>
+    <div className='notifications'>
       <div className='pointer' onClick={props.onClick}>
         <img
           className="slide-arrow"
@@ -12,6 +12,8 @@ function Notifications(props) {
           width="100px"
           alt='animation logo'
         />
+        <h1>Top up your account and make Payments via Paypal</h1>
+        <h3>Coming soon</h3>
        </div>
     </div>
   );
